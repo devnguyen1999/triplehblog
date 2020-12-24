@@ -1,7 +1,79 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
+import { Redirect, Link } from "react-router-dom";
+import { getUser, getToken, removeUserSession } from "../HandleUser";
 
 function Header() {
+  const [loggedIn, setloggedIn] = useState(getToken() ? true : false);
+  const { from } = { from: { pathname: "/" } };
+  const [redirect, setRedirect] = useState(false);
+
+  if (redirect) {
+    return <Redirect to={from} />;
+  }
+  const logOut = (event) => {
+    event.preventDefault();
+    setloggedIn(false);
+    axios({
+      method: "post",
+      url: "https://h3-blog.herokuapp.com/user/logout",
+      data: {
+        token: getToken(),
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+        removeUserSession();
+        setRedirect(true);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+  const displayCheck = () => {
+    if (loggedIn) {
+      var user = getUser();
+      return (
+        <nav className="site-nav">
+          <ul id="site-menu" className="site-menu">
+            <li>
+              <a href="#!">
+                <i className="flaticon-profile mr-3"></i>Đăng Thanh
+              </a>
+              <ul className="dropdown-menu-col-1">
+                <li>
+                  <Link to="/trang-ca-nhan">Trang cá nhân</Link>
+                </li>
+                <li>
+                  <a
+                    type="button"
+                    href="#!"
+                    onClick={(event) => {
+                      logOut(event);
+                    }}
+                  >
+                    Đăng xuất
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      );
+    } else {
+      return (
+        <div className="nav-action-elements-layout1">
+          <ul>
+            <li>
+              <Link className="login-btn" to="/dang-nhap">
+                <i className="flaticon-profile"></i>Đăng nhập
+              </Link>
+            </li>
+          </ul>
+        </div>
+      );
+    }
+  };
   return (
     <div>
       {/* Header Area Start Here */}
@@ -27,7 +99,7 @@ function Header() {
                       <a href="category.html">Category</a>
                     </li>
                     <li>
-                      <a href="#">Recipes</a>
+                      <a href="#!">Recipes</a>
                       <ul className="dropdown-menu-col-1">
                         <li>
                           <a href="recipe-with-sidebar.html">
@@ -48,7 +120,7 @@ function Header() {
                       </ul>
                     </li>
                     <li className="possition-static hide-on-mobile-menu">
-                      <a href="#">Pages</a>
+                      <a href="#!">Pages</a>
                       <div className="template-mega-menu">
                         <div className="container">
                           <div className="row">
@@ -163,7 +235,7 @@ function Header() {
                       </div>
                     </li>
                     <li className="hide-on-desktop-menu">
-                      <a href="#">Pages</a>
+                      <a href="#!">Pages</a>
                       <ul className="dropdown-menu-col-1">
                         <li>
                           <a href="about.html">About</a>
@@ -186,7 +258,7 @@ function Header() {
                       </ul>
                     </li>
                     <li>
-                      <a href="#">Blog</a>
+                      <a href="#!">Blog</a>
                       <ul className="dropdown-menu-col-1">
                         <li>
                           <a href="blog-grid.html">Blog Grid</a>
@@ -200,7 +272,7 @@ function Header() {
                       </ul>
                     </li>
                     <li>
-                      <a href="#">Shop</a>
+                      <a href="#!">Shop</a>
                       <ul className="dropdown-menu-col-1">
                         <li>
                           <a href="shop.html">Shop</a>
@@ -211,21 +283,16 @@ function Header() {
                       </ul>
                     </li>
                     <li>
-                      <a href="contact.html">Contact</a>
+                      <Link to="/lien-he">Liên hệ</Link>
+                    </li>
+                    <li>
+                      <Link to="/ve-chung-toi">Về chúng tôi</Link>
                     </li>
                   </ul>
                 </nav>
               </div>
               <div className="col-lg-4 col-md-9 col-sm-8 col-8 d-flex align-items-center justify-content-end">
-                <div className="nav-action-elements-layout1">
-                  <ul>
-                    <li>
-                      <Link className="login-btn" to="/dang-nhap">
-                        Đăng nhập
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                {displayCheck()}
                 <div className="mob-menu-open toggle-menu">
                   <span className="bar" />
                   <span className="bar" />
@@ -243,37 +310,37 @@ function Header() {
                 <div className="nav-action-elements-layout2">
                   <ul className="nav-social">
                     <li>
-                      <a href="#" title="facebook">
+                      <a href="#!" title="facebook">
                         <i className="fab fa-facebook-f" />
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="twitter">
+                      <a href="#!" title="twitter">
                         <i className="fab fa-twitter" />
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="linkedin">
+                      <a href="#!" title="linkedin">
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="pinterest">
+                      <a href="#!" title="pinterest">
                         <i className="fab fa-pinterest-p" />
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="skype">
+                      <a href="#!" title="skype">
                         <i className="fab fa-skype" />
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="rss">
+                      <a href="#!" title="rss">
                         <i className="fas fa-rss" />
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="google-plus">
+                      <a href="#!" title="google-plus">
                         <i className="fab fa-google-plus-g" />
                       </a>
                     </li>

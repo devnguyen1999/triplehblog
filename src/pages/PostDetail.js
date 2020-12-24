@@ -9,7 +9,6 @@ function PostDetail() {
       {/* Inne Page Banner Area Start Here */}
       <section
         className="inner-page-banner bg-common"
-        data-bg-image="img/figure/inner-page-banner1.jpg"
       >
         <div className="container">
           <div className="row">

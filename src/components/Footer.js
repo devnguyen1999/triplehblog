@@ -2,6 +2,9 @@ import React from "react";
 
 function Footer() {
   return (
+    <div>
+      {/* Footer Area Start Here */}
+
       <footer className="ranna-bg-dark">
         <div className="container">
           <div className="footer-logo">
@@ -37,6 +40,8 @@ function Footer() {
           </div>
         </div>
       </footer>
+      {/* Footer Area End Here */}
+    </div>
   );
 }
 

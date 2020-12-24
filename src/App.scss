@@ -25,7 +25,7 @@
 /*=======================================================================
 1. Typography 
 =========================================================================*/
-@import url('https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700|Lora:400,700');
+@import url("https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700|Lora:400,700");
 
 html {
   height: 100%;
@@ -64,7 +64,7 @@ html {
 
 body {
   font-size: 16px;
-  font-family: 'Hind', sans-serif;
+  font-family: "Hind", sans-serif;
   font-weight: 400;
   height: 100%;
   line-height: 1.6;
@@ -79,9 +79,14 @@ p {
   margin: 0 0 20px 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   margin: 0 0 20px 0;
   color: #111111;
 }
@@ -94,7 +99,10 @@ h2 {
   line-height: 1.3;
 }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.4;
 }
 
@@ -165,11 +173,15 @@ h6 {
 a {
   text-decoration: none;
 
-  &:active, &:hover, &:focus {
+  &:active,
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 
-  &:active, &:hover, &:focus {
+  &:active,
+  &:hover,
+  &:focus {
     outline: 0 none;
   }
 }
@@ -185,7 +197,10 @@ ul {
   padding: 0;
 }
 
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
   margin-left: 0;
 }
 
@@ -196,7 +211,9 @@ ul {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .remove-3rd-child-lg li:nth-child(3n), .remove-4th-child-lg li:nth-child(4n), .remove-5th-child-lg li:nth-child(5n) {
+  .remove-3rd-child-lg li:nth-child(3n),
+  .remove-4th-child-lg li:nth-child(4n),
+  .remove-5th-child-lg li:nth-child(5n) {
     display: none !important;
   }
 }
@@ -279,7 +296,9 @@ ul {
   position: static !important;
 }
 
-.entry-meta, .post-date, .item-post-date {
+.entry-meta,
+.post-date,
+.item-post-date {
   font-size: 15px;
 }
 
@@ -615,7 +634,8 @@ ul {
 }
 
 #preloader {
-  background: #ffffff url('./assets/img/preloader.gif') no-repeat scroll center center;
+  background: #ffffff url("./assets/img/preloader.gif") no-repeat scroll center
+    center;
   height: 100%;
   left: 0;
   overflow: visible;
@@ -654,11 +674,13 @@ ul {
     transition: all 0.5s ease-out;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: #ffffff;
   }
 
-  &:hover i, &:focus i {
+  &:hover i,
+  &:focus i {
     -webkit-animation: toBottomFromTop 0.5s forwards;
     animation: toBottomFromTop 0.5s forwards;
   }
@@ -712,7 +734,7 @@ ul {
   z-index: 99999;
 
   &:before {
-    content: '';
+    content: "";
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -897,7 +919,8 @@ ul {
                 border: 1px solid #cccccc;
                 border-radius: 3px;
                 background-color: #fff;
-                -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+                -webkit-transition: border 0.15s ease-in-out,
+                  color 0.15s ease-in-out;
                 -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
                 transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
               }
@@ -927,7 +950,7 @@ ul {
               }
 
               &:checked + label::after {
-                font-family: 'FontAwesome';
+                font-family: "Font Awesome 5";
                 content: "\f00c";
               }
 
@@ -1093,7 +1116,12 @@ ul {
 }
 
 @media only screen and (max-width: 479px) {
-  .modal .modal-dialog .modal-content .modal-body .login-form input.main-input-box {
+  .modal
+    .modal-dialog
+    .modal-content
+    .modal-body
+    .login-form
+    input.main-input-box {
     height: 40px;
   }
 }
@@ -1136,7 +1164,8 @@ ul {
     border-radius: 0;
   }
 
-  .select2-selection--single:focus, &.select2-container--open .select2-selection--single {
+  .select2-selection--single:focus,
+  &.select2-container--open .select2-selection--single {
     border: none;
     border-radius: 0;
   }
@@ -1191,7 +1220,8 @@ ul {
   }
 
   &.select2-container--open {
-    &.select2-container--below .select2-selection--single, &.select2-container--above .select2-selection--single {
+    &.select2-container--below .select2-selection--single,
+    &.select2-container--above .select2-selection--single {
       background-image: none;
       border-radius: 4px;
     }
@@ -1204,7 +1234,9 @@ ul {
     height: 100%;
   }
 
-  &.select2-container--open .select2-selection--single .select2-selection__arrow {
+  &.select2-container--open
+    .select2-selection--single
+    .select2-selection__arrow {
     top: 50%;
     transform: translateY(-50%);
     right: 7px;
@@ -1230,7 +1262,10 @@ ul {
     }
   }
 
-  &.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  &.select2-container--open
+    .select2-selection--single
+    .select2-selection__arrow
+    b {
     border-color: transparent transparent #444444 transparent;
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
@@ -1254,7 +1289,8 @@ ul {
   margin-left: 0;
 
   > {
-    [class^="col-"], [class*=" col-"] {
+    [class^="col-"],
+    [class*=" col-"] {
       padding-right: 0;
       padding-left: 0;
     }
@@ -1523,7 +1559,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1557,7 +1597,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1591,7 +1635,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1625,7 +1673,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1659,7 +1711,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1693,7 +1749,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1727,7 +1787,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1761,7 +1825,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1795,7 +1863,11 @@ ul {
       margin-top: 20px;
       margin-left: 0;
 
-      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+      &.space-xl,
+      &.space-lg,
+      &.space-md,
+      &.space-sm,
+      &.space-xs {
         margin-top: 20px;
         margin-left: 0;
       }
@@ -1827,7 +1899,7 @@ ul {
 
   .item-heading {
     margin-bottom: 0;
-    font-family: 'Hind', sans-serif;
+    font-family: "Hind", sans-serif;
     font-size: 24px;
     font-weight: 600;
   }
@@ -1925,7 +1997,7 @@ ul {
 
   .item-heading {
     margin-bottom: 0;
-    font-family: 'Hind', sans-serif;
+    font-family: "Hind", sans-serif;
     font-size: 20px;
     font-weight: 500;
     text-align: center;
@@ -2041,7 +2113,7 @@ ul {
   .instagram-feed-figure li {
     display: none;
 
-    &:nth-child(-n+6) {
+    &:nth-child(-n + 6) {
       display: block;
     }
   }
@@ -2051,7 +2123,7 @@ ul {
   .instagram-feed-figure li {
     display: none;
 
-    &:nth-child(-n+5) {
+    &:nth-child(-n + 5) {
       display: block;
     }
   }
@@ -2061,7 +2133,7 @@ ul {
   .instagram-feed-figure li {
     display: none;
 
-    &:nth-child(-n+4) {
+    &:nth-child(-n + 4) {
       display: block;
     }
   }
@@ -2071,7 +2143,7 @@ ul {
   .instagram-feed-figure li {
     display: none;
 
-    &:nth-child(-n+3) {
+    &:nth-child(-n + 3) {
       display: block;
     }
   }
@@ -2081,7 +2153,7 @@ ul {
   .instagram-feed-figure li {
     display: none;
 
-    &:nth-child(-n+2) {
+    &:nth-child(-n + 2) {
       display: block;
     }
   }
@@ -2201,7 +2273,7 @@ ul {
 
       &:before {
         content: "\f054";
-        font-family: "Font Awesome 5 Free";
+        font-family: "Font Awesome 5";
         font-weight: 600;
         font-size: 14px;
         position: absolute;
@@ -2481,7 +2553,7 @@ ul {
         }
 
         &:checked + label::after {
-          font-family: 'FontAwesome';
+          font-family: "Font Awesome 5";
           content: "\f00c";
         }
 
@@ -2515,7 +2587,14 @@ ul {
     }
   }
 
-  input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+  input.form-control::-webkit-input-placeholder,
+  textarea.form-control::-webkit-input-placeholder,
+  input.form-control::-moz-placeholder,
+  textarea.form-control::-moz-placeholder,
+  input.form-control:-moz-placeholder,
+  textarea.form-control:-moz-placeholder,
+  input.form-control:-ms-input-placeholder,
+  textarea.form-control:-ms-input-placeholder {
     color: #bcbcbc;
   }
 }
@@ -2551,7 +2630,10 @@ ul {
 }
 
 @media only screen and (max-width: 575px) {
-  .adv-search-wrap .btn-group .input-group-btn.adv-search-fill-btn button.btn-adv-serch {
+  .adv-search-wrap
+    .btn-group
+    .input-group-btn.adv-search-fill-btn
+    button.btn-adv-serch {
     height: 40px;
   }
 }
@@ -2614,7 +2696,7 @@ ul {
     margin-right: 10px;
     display: inline-block;
     position: relative;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
 
     > a {
@@ -2634,7 +2716,8 @@ ul {
     a.current {
       color: #ff4a52;
 
-      &:after, &:before {
+      &:after,
+      &:before {
         -webkit-transition-delay: 0s;
         -o-transition-delay: 0s;
         transition-delay: 0s;
@@ -2698,7 +2781,7 @@ ul {
 
           &:after {
             content: "\f04b";
-            font-family: "Font Awesome 5 Free";
+            font-family: "Font Awesome 5";
             font-weight: 600;
             font-size: 6px;
             position: absolute;
@@ -2884,7 +2967,7 @@ ul {
       box-shadow: none;
       border: none;
       font-weight: 400;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       -webkit-transition: all 0.3s ease-out;
       -moz-transition: all 0.3s ease-out;
       -ms-transition: all 0.3s ease-out;
@@ -3065,7 +3148,10 @@ ul {
         }
 
         input {
-          &::-webkit-input-placeholder, &::-moz-placeholder, &:-moz-placeholder, &:-ms-input-placeholder {
+          &::-webkit-input-placeholder,
+          &::-moz-placeholder,
+          &:-moz-placeholder,
+          &:-ms-input-placeholder {
             color: #ffffff;
           }
         }
@@ -3278,7 +3364,12 @@ ul {
       margin: 0px auto;
       padding: 25px 10px 25px 30px;
       outline: none;
-      background: linear-gradient(to right, transparent, rgba(200, 200, 200, 0.5), transparent);
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(200, 200, 200, 0.5),
+        transparent
+      );
     }
 
     .search-btn {
@@ -3564,11 +3655,13 @@ ul {
             text-decoration: none;
             padding: 15px 10px;
 
-            &:after, &:before {
+            &:after,
+            &:before {
               bottom: 0;
             }
 
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
               color: #ff4a52;
             }
           }
@@ -3582,7 +3675,8 @@ ul {
             li a {
               text-align: left;
 
-              &:after, &:before {
+              &:after,
+              &:before {
                 bottom: inherit;
               }
             }
@@ -3642,7 +3736,8 @@ ul {
         -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
 
-        &:nth-child(2), &:nth-child(3) {
+        &:nth-child(2),
+        &:nth-child(3) {
           width: 25px;
           margin-left: 5px;
         }
@@ -3653,7 +3748,8 @@ ul {
       }
 
       &.active .bar {
-        &:nth-child(2), &:nth-child(3) {
+        &:nth-child(2),
+        &:nth-child(3) {
           opacity: 0;
         }
 
@@ -3694,7 +3790,8 @@ ul {
           > a {
             padding: 15px 10px;
 
-            &:after, &:before {
+            &:after,
+            &:before {
               bottom: 0;
             }
           }
@@ -3707,7 +3804,8 @@ ul {
             li a {
               text-align: left;
 
-              &:after, &:before {
+              &:after,
+              &:before {
                 bottom: inherit;
               }
             }
@@ -3763,7 +3861,8 @@ ul {
     .mob-menu-open .bar {
       background: #ffffff;
 
-      &:nth-child(2), &:nth-child(3) {
+      &:nth-child(2),
+      &:nth-child(3) {
         background: #ffffff;
       }
     }
@@ -3801,7 +3900,8 @@ ul {
       .mob-menu-open .bar {
         background: #000000;
 
-        &:nth-child(2), &:nth-child(3) {
+        &:nth-child(2),
+        &:nth-child(3) {
           background: #000000;
         }
       }
@@ -3812,7 +3912,8 @@ ul {
     .mob-menu-open .bar {
       background: #000000;
 
-      &:nth-child(2), &:nth-child(3) {
+      &:nth-child(2),
+      &:nth-child(3) {
         background: #000000;
       }
     }
@@ -3850,7 +3951,8 @@ ul {
       .mob-menu-open .bar {
         background: #000000;
 
-        &:nth-child(2), &:nth-child(3) {
+        &:nth-child(2),
+        &:nth-child(3) {
           background: #000000;
         }
       }
@@ -3860,7 +3962,8 @@ ul {
 
 @media only screen and (max-width: 480px) {
   .header-main-menu {
-    .site-nav .site-menu > li ul.dropdown-menu-col-1, &.header-fixed .site-nav .site-menu > li ul.dropdown-menu-col-1 {
+    .site-nav .site-menu > li ul.dropdown-menu-col-1,
+    &.header-fixed .site-nav .site-menu > li ul.dropdown-menu-col-1 {
       top: 20px;
       left: 100px;
       width: 180px;
@@ -4289,19 +4392,30 @@ ul {
     }
 
     .alert {
-      &.alert-danger, &.alert-info, &.alert-success {
+      &.alert-danger,
+      &.alert-info,
+      &.alert-success {
         margin-top: 10px;
         margin-bottom: 0;
         margin-left: 15px;
         border-radius: 0;
       }
 
-      &.alert-danger p, &.alert-info p, &.alert-success p {
+      &.alert-danger p,
+      &.alert-info p,
+      &.alert-success p {
         margin-bottom: 0;
       }
     }
 
-    input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+    input.form-control::-webkit-input-placeholder,
+    textarea.form-control::-webkit-input-placeholder,
+    input.form-control::-moz-placeholder,
+    textarea.form-control::-moz-placeholder,
+    input.form-control:-moz-placeholder,
+    textarea.form-control:-moz-placeholder,
+    input.form-control:-ms-input-placeholder,
+    textarea.form-control:-ms-input-placeholder {
       color: #a5a5a5;
     }
 
@@ -4501,11 +4615,20 @@ ul {
 
   &:after {
     opacity: 0.8;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#111), to(transparent));
+    background-image: -webkit-gradient(
+      linear,
+      0 0,
+      0 100%,
+      from(#111),
+      to(transparent)
+    );
     background-image: -webkit-linear-gradient(transparent, #111);
-    background-image: -moz-linear-gradient(transparent, #111), -moz-linear-gradient(transparent, #111);
-    background-image: -o-linear-gradient(transparent, #111), -o-linear-gradient(transparent, #111);
-    background-image: linear-gradient(transparent, #111), linear-gradient(transparent, #111);
+    background-image: -moz-linear-gradient(transparent, #111),
+      -moz-linear-gradient(transparent, #111);
+    background-image: -o-linear-gradient(transparent, #111),
+      -o-linear-gradient(transparent, #111);
+    background-image: linear-gradient(transparent, #111),
+      linear-gradient(transparent, #111);
     content: "";
     height: 80%;
     bottom: 0;
@@ -6537,7 +6660,8 @@ ul {
             border: 1px solid #cccccc;
             border-radius: 2px;
             background-color: #fff;
-            -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            -webkit-transition: border 0.15s ease-in-out,
+              color 0.15s ease-in-out;
             -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
             transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
           }
@@ -6567,7 +6691,7 @@ ul {
           }
 
           &:checked + label::after {
-            font-family: 'FontAwesome';
+            font-family: "Font Awesome 5";
             content: "\f00c";
           }
 
@@ -7076,7 +7200,8 @@ ul {
       cursor: pointer;
       display: inline-flex;
 
-      &:hover, &.selected {
+      &:hover,
+      &.selected {
         color: #fdc800;
       }
     }
@@ -7090,7 +7215,8 @@ ul {
       cursor: pointer;
       margin: 0px 3px 0px 3px;
 
-      &:hover ~ .rate-item, &.active ~ .rate-item {
+      &:hover ~ .rate-item,
+      &.active ~ .rate-item {
         color: #c9c9c9;
       }
     }
@@ -7157,19 +7283,30 @@ ul {
       }
 
       .alert {
-        &.alert-danger, &.alert-info, &.alert-success {
+        &.alert-danger,
+        &.alert-info,
+        &.alert-success {
           margin-top: 10px;
           margin-bottom: 0;
           margin-left: 15px;
           border-radius: 0;
         }
 
-        &.alert-danger p, &.alert-info p, &.alert-success p {
+        &.alert-danger p,
+        &.alert-info p,
+        &.alert-success p {
           margin-bottom: 0;
         }
       }
 
-      input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+      input.form-control::-webkit-input-placeholder,
+      textarea.form-control::-webkit-input-placeholder,
+      input.form-control::-moz-placeholder,
+      textarea.form-control::-moz-placeholder,
+      input.form-control:-moz-placeholder,
+      textarea.form-control:-moz-placeholder,
+      input.form-control:-ms-input-placeholder,
+      textarea.form-control:-ms-input-placeholder {
         color: #646464;
       }
     }
@@ -7197,7 +7334,10 @@ ul {
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout1 .making-elements-wrap .ingridients-wrap .adjust-servings {
+  .single-recipe-layout1
+    .making-elements-wrap
+    .ingridients-wrap
+    .adjust-servings {
     display: block;
     text-align: center;
     padding: 10px 10px 15px 15px;
@@ -7205,13 +7345,21 @@ ul {
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout1 .making-elements-wrap .ingridients-wrap .adjust-servings .servings-title {
+  .single-recipe-layout1
+    .making-elements-wrap
+    .ingridients-wrap
+    .adjust-servings
+    .servings-title {
     margin-bottom: 10px;
   }
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout1 .making-elements-wrap .ingridients-wrap .adjust-servings .servings-quantity {
+  .single-recipe-layout1
+    .making-elements-wrap
+    .ingridients-wrap
+    .adjust-servings
+    .servings-quantity {
     margin: 0 auto;
   }
 }
@@ -7230,25 +7378,37 @@ ul {
 }
 
 @media only screen and (max-width: 767px) {
-  .single-recipe-layout1 .direction-wrap-layout1 .direction-box-layout1 .item-figure {
+  .single-recipe-layout1
+    .direction-wrap-layout1
+    .direction-box-layout1
+    .item-figure {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout1 .direction-wrap-layout1 .direction-box-layout1 .item-figure:after {
+  .single-recipe-layout1
+    .direction-wrap-layout1
+    .direction-box-layout1
+    .item-figure:after {
     display: none;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .single-recipe-layout1 .direction-wrap-layout1 .direction-box-layout1 .item-content {
+  .single-recipe-layout1
+    .direction-wrap-layout1
+    .direction-box-layout1
+    .item-content {
     flex: inherit;
   }
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout1 .direction-wrap-layout1 .direction-box-layout1 .item-content {
+  .single-recipe-layout1
+    .direction-wrap-layout1
+    .direction-box-layout1
+    .item-content {
     margin-left: 20px;
   }
 }
@@ -7285,7 +7445,11 @@ ul {
 }
 
 @media only screen and (max-width: 1199px) {
-  .single-recipe-layout1 .recipe-reviews ul li.reviews-single-item .item-rating {
+  .single-recipe-layout1
+    .recipe-reviews
+    ul
+    li.reviews-single-item
+    .item-rating {
     position: inherit;
     margin-bottom: 5px;
   }
@@ -7773,7 +7937,8 @@ ul {
             border: 1px solid #cccccc;
             border-radius: 2px;
             background-color: #fff;
-            -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            -webkit-transition: border 0.15s ease-in-out,
+              color 0.15s ease-in-out;
             -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
             transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
           }
@@ -7803,7 +7968,7 @@ ul {
           }
 
           &:checked + label::after {
-            font-family: 'FontAwesome';
+            font-family: "Font Awesome 5";
             content: "\f00c";
           }
 
@@ -8354,7 +8519,8 @@ ul {
       cursor: pointer;
       display: inline-flex;
 
-      &:hover, &.selected {
+      &:hover,
+      &.selected {
         color: #fdc800;
       }
     }
@@ -8368,7 +8534,8 @@ ul {
       cursor: pointer;
       margin: 0px 5px 0px 5px;
 
-      &:hover ~ .rate-item, &.active ~ .rate-item {
+      &:hover ~ .rate-item,
+      &.active ~ .rate-item {
         color: #c9c9c9;
       }
     }
@@ -8435,19 +8602,30 @@ ul {
       }
 
       .alert {
-        &.alert-danger, &.alert-info, &.alert-success {
+        &.alert-danger,
+        &.alert-info,
+        &.alert-success {
           margin-top: 10px;
           margin-bottom: 0;
           margin-left: 15px;
           border-radius: 0;
         }
 
-        &.alert-danger p, &.alert-info p, &.alert-success p {
+        &.alert-danger p,
+        &.alert-info p,
+        &.alert-success p {
           margin-bottom: 0;
         }
       }
 
-      input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+      input.form-control::-webkit-input-placeholder,
+      textarea.form-control::-webkit-input-placeholder,
+      input.form-control::-moz-placeholder,
+      textarea.form-control::-moz-placeholder,
+      input.form-control:-moz-placeholder,
+      textarea.form-control:-moz-placeholder,
+      input.form-control:-ms-input-placeholder,
+      textarea.form-control:-ms-input-placeholder {
         color: #646464;
       }
     }
@@ -8517,7 +8695,10 @@ ul {
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout2 .making-elements-wrap .ingridients-wrap .adjust-servings {
+  .single-recipe-layout2
+    .making-elements-wrap
+    .ingridients-wrap
+    .adjust-servings {
     display: block;
     text-align: center;
     padding: 10px 10px 15px 20px;
@@ -8525,13 +8706,21 @@ ul {
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout2 .making-elements-wrap .ingridients-wrap .adjust-servings .servings-title {
+  .single-recipe-layout2
+    .making-elements-wrap
+    .ingridients-wrap
+    .adjust-servings
+    .servings-title {
     margin-bottom: 10px;
   }
 }
 
 @media only screen and (max-width: 575px) {
-  .single-recipe-layout2 .making-elements-wrap .ingridients-wrap .adjust-servings .servings-quantity {
+  .single-recipe-layout2
+    .making-elements-wrap
+    .ingridients-wrap
+    .adjust-servings
+    .servings-quantity {
     margin: 0 auto;
   }
 }
@@ -8560,7 +8749,10 @@ ul {
 }
 
 @media only screen and (max-width: 767px) {
-  .single-recipe-layout2 .direction-wrap-layout2 .direction-box-layout2 .serial-number {
+  .single-recipe-layout2
+    .direction-wrap-layout2
+    .direction-box-layout2
+    .serial-number {
     margin-bottom: 20px;
     height: 85px;
     width: 80px;
@@ -8568,19 +8760,30 @@ ul {
 }
 
 @media only screen and (max-width: 767px) {
-  .single-recipe-layout2 .direction-wrap-layout2 .direction-box-layout2 .serial-number .number-title {
+  .single-recipe-layout2
+    .direction-wrap-layout2
+    .direction-box-layout2
+    .serial-number
+    .number-title {
     font-size: 26px;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .single-recipe-layout2 .direction-wrap-layout2 .direction-box-layout2 .serial-number span {
+  .single-recipe-layout2
+    .direction-wrap-layout2
+    .direction-box-layout2
+    .serial-number
+    span {
     font-size: 16px;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .single-recipe-layout2 .direction-wrap-layout2 .direction-box-layout2 .item-content {
+  .single-recipe-layout2
+    .direction-wrap-layout2
+    .direction-box-layout2
+    .item-content {
     margin-left: 0;
   }
 }
@@ -8689,7 +8892,11 @@ ul {
 }
 
 @media only screen and (max-width: 991px) {
-  .single-recipe-layout2 .recipe-reviews ul li.reviews-single-item .item-rating {
+  .single-recipe-layout2
+    .recipe-reviews
+    ul
+    li.reviews-single-item
+    .item-rating {
     position: inherit;
     margin-bottom: 5px;
   }
@@ -8718,11 +8925,20 @@ ul {
 
   &:after {
     opacity: 0.8;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#111), to(transparent));
+    background-image: -webkit-gradient(
+      linear,
+      0 0,
+      0 100%,
+      from(#111),
+      to(transparent)
+    );
     background-image: -webkit-linear-gradient(transparent, #111);
-    background-image: -moz-linear-gradient(transparent, #111), -moz-linear-gradient(transparent, #111);
-    background-image: -o-linear-gradient(transparent, #111), -o-linear-gradient(transparent, #111);
-    background-image: linear-gradient(transparent, #111), linear-gradient(transparent, #111);
+    background-image: -moz-linear-gradient(transparent, #111),
+      -moz-linear-gradient(transparent, #111);
+    background-image: -o-linear-gradient(transparent, #111),
+      -o-linear-gradient(transparent, #111);
+    background-image: linear-gradient(transparent, #111),
+      linear-gradient(transparent, #111);
     content: "";
     height: 80%;
     bottom: 0;
@@ -8820,12 +9036,24 @@ ul {
   padding: 7rem 7rem 6.5rem;
   margin-bottom: 3rem;
 
+  .register-now {
+    margin-bottom: 0;
+    margin-top: 0;
+
+    a {
+      color: #ff4a52;
+      font-weight: 500;
+    }
+  }
+
   .login-form {
+    .error{
+      color: #ff4a52;
+    }
     input.main-input-box {
       height: 50px;
       border-radius: 0;
       border: none;
-      margin-bottom: 20px;
       color: #111111;
       font-weight: 500;
       font-size: 15px;
@@ -8949,7 +9177,7 @@ ul {
         }
 
         &:checked + label::after {
-          font-family: 'FontAwesome';
+          font-family: "Font Awesome 5";
           content: "\f00c";
         }
 
@@ -9524,7 +9752,7 @@ ul {
       padding: 30px 50px;
       font-size: 20px;
       color: #5c5c5c;
-      font-family: 'Lora', serif;
+      font-family: "Lora", serif;
       font-weight: 700;
       font-style: italic;
       position: relative;
@@ -9532,7 +9760,7 @@ ul {
 
       &:before {
         content: "\f10d";
-        font-family: Font Awesome\ 5 Free;
+        font-family: "Font Awesome 5";
         font-weight: 600;
         top: 15px;
         left: 20px;
@@ -9545,7 +9773,7 @@ ul {
 
         &:after {
           content: "\f10e";
-          font-family: Font Awesome\ 5 Free;
+          font-family: "Font Awesome 5";
           font-weight: 600;
           bottom: -10px;
           right: -30px;
@@ -10043,19 +10271,30 @@ ul {
       }
 
       .alert {
-        &.alert-danger, &.alert-info, &.alert-success {
+        &.alert-danger,
+        &.alert-info,
+        &.alert-success {
           margin-top: 10px;
           margin-bottom: 0;
           margin-left: 15px;
           border-radius: 0;
         }
 
-        &.alert-danger p, &.alert-info p, &.alert-success p {
+        &.alert-danger p,
+        &.alert-info p,
+        &.alert-success p {
           margin-bottom: 0;
         }
       }
 
-      input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+      input.form-control::-webkit-input-placeholder,
+      textarea.form-control::-webkit-input-placeholder,
+      input.form-control::-moz-placeholder,
+      textarea.form-control::-moz-placeholder,
+      input.form-control:-moz-placeholder,
+      textarea.form-control:-moz-placeholder,
+      input.form-control:-ms-input-placeholder,
+      textarea.form-control:-ms-input-placeholder {
         color: #646464;
       }
     }
@@ -10214,7 +10453,10 @@ ul {
     box-shadow: none;
   }
 
-  .select2-container--classic .select2-selection--single .select2-selection__rendered label {
+  .select2-container--classic
+    .select2-selection--single
+    .select2-selection__rendered
+    label {
     margin: 0 0 1rem;
     font-size: 20px;
     font-weight: 500;
@@ -10278,7 +10520,8 @@ ul {
       border: 1px solid #cccccc;
     }
 
-    .note-popover .popover-content, .panel-heading.note-toolbar {
+    .note-popover .popover-content,
+    .panel-heading.note-toolbar {
       padding: 5px 5px 10px;
     }
 
@@ -10436,7 +10679,8 @@ ul {
   display: -webkit-flex;
   display: flex;
 
-  .contact-box-left, .contact-box-right {
+  .contact-box-left,
+  .contact-box-right {
     width: 50%;
   }
 
@@ -10456,7 +10700,8 @@ ul {
 
 @media only screen and (max-width: 991px) {
   .contact-page-wrap {
-    .contact-box-left, .contact-box-right {
+    .contact-box-left,
+    .contact-box-right {
       width: 100%;
     }
   }
@@ -10584,19 +10829,30 @@ ul {
   }
 
   .alert {
-    &.alert-danger, &.alert-info, &.alert-success {
+    &.alert-danger,
+    &.alert-info,
+    &.alert-success {
       margin-top: 10px;
       margin-bottom: 0;
       margin-left: 15px;
       border-radius: 0;
     }
 
-    &.alert-danger p, &.alert-info p, &.alert-success p {
+    &.alert-danger p,
+    &.alert-info p,
+    &.alert-success p {
       margin-bottom: 0;
     }
   }
 
-  input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+  input.form-control::-webkit-input-placeholder,
+  textarea.form-control::-webkit-input-placeholder,
+  input.form-control::-moz-placeholder,
+  textarea.form-control::-moz-placeholder,
+  input.form-control:-moz-placeholder,
+  textarea.form-control:-moz-placeholder,
+  input.form-control:-ms-input-placeholder,
+  textarea.form-control:-ms-input-placeholder {
     color: #a5a5a5;
   }
 
@@ -10947,7 +11203,7 @@ ul {
 .widget-newsletter-subscribe {
   background-color: #f0f0f0;
   text-align: center;
-  padding: 4rem 5rem;
+  padding: 3rem 2.5rem;
 
   h3 {
     color: #111111;
@@ -10982,7 +11238,10 @@ ul {
         border-color: transparent;
       }
 
-      &::-webkit-input-placeholder, &::-moz-placeholder, &:-moz-placeholder, &:-ms-input-placeholder {
+      &::-webkit-input-placeholder,
+      &::-moz-placeholder,
+      &:-moz-placeholder,
+      &:-ms-input-placeholder {
         color: #646464;
       }
     }
@@ -11624,7 +11883,13 @@ ul {
     }
   }
 
-  textarea.form-control::-webkit-input-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+  textarea.form-control::-webkit-input-placeholder,
+  input.form-control::-moz-placeholder,
+  textarea.form-control::-moz-placeholder,
+  input.form-control:-moz-placeholder,
+  textarea.form-control:-moz-placeholder,
+  input.form-control:-ms-input-placeholder,
+  textarea.form-control:-ms-input-placeholder {
     color: #444444;
     font-size: 16px;
   }

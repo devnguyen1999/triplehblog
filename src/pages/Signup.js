@@ -6,11 +6,11 @@ import axios from "axios";
 import { setUserSession } from "../HandleUser";
 import { useForm } from "react-hook-form";
 
-function Signup() {
+function Login() {
   const { handleSubmit, register, errors } = useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { from } = { from: { pathname: "/dang-nhap" } };
+  const { from } = { from: { pathname: "/" } };
   const [redirect, setRedirect] = useState(false);
   const errorMessage = (error) => {
     return <label className="error mt-2">{error}</label>;
@@ -58,12 +58,12 @@ function Signup() {
           <div className="row">
             <div className="col-12">
               <div className="breadcrumbs-area">
-                <h1>Đăng nhập</h1>
+                <h1>Đăng ký</h1>
                 <ul>
                   <li>
                     <Link to="/">Trang chủ</Link>
                   </li>
-                  <li>Đăng nhập</li>
+                  <li>Đăng ký</li>
                 </ul>
               </div>
             </div>
@@ -78,7 +78,7 @@ function Signup() {
             <div className="col-lg-8">
               <div className="login-box-layout1">
                 <div className="section-heading heading-dark">
-                  <h2 className="item-heading">FORM ĐĂNG NHẬP</h2>
+                  <h2 className="item-heading">FORM ĐĂNG KÝ</h2>
                 </div>
                 <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="row">
@@ -122,16 +122,11 @@ function Signup() {
                     </div>
                   </div>
                   <div className="row mt-5">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                       <div className="checkbox checkbox-primary">
                         <input id="checkbox1" type="checkbox" />
-                        <label htmlFor="checkbox1">Nhớ tài khoản</label>
+                        <label htmlFor="checkbox1">Đồng ý với <strong><Link>Điều khoản sử dụng</Link></strong> của chúng tôi.</label>
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <label className="lost-password">
-                        <Link to="/quen-mat-khau">Quên mật khẩu</Link>
-                      </label>
                     </div>
                   </div>
                   <div className="btn-area">
@@ -139,39 +134,14 @@ function Signup() {
                       className="btn-fill btn-primary"
                       type="submit"
                     >
-                      Đăng nhập
+                      Đăng ký
                       <i className="flaticon-next" />
                     </button>
                   </div>
                 </form>
                 <label className="d-block register-now">
-                  Bạn chưa có tài khoản? <Link to="/dang-ky">Đăng ký ngay</Link>
+                  Bạn đã có tài khoản? <Link to="/dang-nhap">Đăng nhập ngay</Link>
                 </label>
-                {/* <label className="d-block">Hoặc kết nối với mạng xã hội</label>
-                  <div className="login-box-social">
-                    <ul>
-                      <li>
-                        <a href="#" className="facebook">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="twitter">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="linkedin">
-                          <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="google">
-                          <i className="fab fa-google-plus-g" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div> */}
               </div>
             </div>
             <div className="col-lg-4 sidebar-widget-area sidebar-break-md">
@@ -202,4 +172,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;
