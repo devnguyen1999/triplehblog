@@ -2,9 +2,9 @@ import axios from "axios";
 
 // return the user data from the session storage
 export const getUser = () => {
-  const email = sessionStorage.getItem("email");
-  if (email) {
-    return JSON.parse(email);
+  const user = sessionStorage.getItem("user");
+  if (user) {
+    return JSON.parse(user);
   } else {
     return null;
   }
@@ -33,12 +33,12 @@ export const refreshToken = () => {
 export const removeUserSession = () => {
   sessionStorage.removeItem("token");
   sessionStorage.removeItem("refreshToken");
-  sessionStorage.removeItem("email");
+  sessionStorage.removeItem("user");
 };
 
 // set the token and user from the session storage
-export const setUserSession = (token, refreshToken, email) => {
+export const setUserSession = (token, refreshToken, user) => {
   sessionStorage.setItem("token", token);
   sessionStorage.setItem("refreshToken", refreshToken);
-  sessionStorage.setItem("email", JSON.stringify(email));
+  sessionStorage.setItem("user", JSON.stringify(user));
 };

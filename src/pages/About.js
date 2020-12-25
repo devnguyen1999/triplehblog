@@ -52,42 +52,33 @@ function About() {
                   tightlyapedey innocuouslylife.
                 </p>
                 <div className="section-heading heading-dark">
-                  <h2 className="item-heading">LIÊN HỆ NHANH VỚI CHÚNG TÔI</h2>
+                  <h2 className="item-heading">GỬI PHẢN HỒI CHO CHÚNG TÔI</h2>
                 </div>
                 <form className="about-contact-form">
                   <div className="row">
-                    <div className="col-md-4 form-group">
+                    <div className="col-md-6 form-group">
                       <input
                         type="text"
-                        placeholder="Name *"
+                        placeholder="Tên *"
                         className="form-control"
                         name="name"
-                        data-error="Name field is required"
-                        required
                       />
-                      <div className="help-block with-errors" />
                     </div>
-                    <div className="col-md-4 form-group">
+                    <div className="col-md-6 form-group">
                       <input
                         type="email"
                         placeholder="E-mail *"
                         className="form-control"
                         name="email"
-                        data-error="E-mail field is required"
-                        required
                       />
-                      <div className="help-block with-errors" />
                     </div>
-                    <div className="col-md-4 form-group">
+                    <div className="col-md-12 form-group">
                       <input
                         type="text"
-                        placeholder="Phone *"
+                        placeholder="Chủ đề *"
                         className="form-control"
-                        name="phone"
-                        data-error="Subject field is required"
-                        required
+                        name="subject"
                       />
-                      <div className="help-block with-errors" />
                     </div>
                     <div className="col-12 form-group">
                       <textarea
@@ -97,15 +88,11 @@ function About() {
                         id="form-message"
                         rows={7}
                         cols={20}
-                        data-error="Message field is required"
-                        required
-                        defaultValue={""}
                       />
-                      <div className="help-block with-errors" />
                     </div>
                     <div className="col-12 form-group mb-0 mt-3">
                       <button type="submit" className="item-btn">
-                        SEND MESSAGE
+                        GỬI PHẢN HỒI
                       </button>
                     </div>
                     <div className="form-response" />

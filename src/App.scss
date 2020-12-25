@@ -64,7 +64,6 @@ html {
 
 body {
   font-size: 16px;
-  font-family: "Hind", sans-serif;
   font-weight: 400;
   height: 100%;
   line-height: 1.6;
@@ -86,7 +85,6 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-  font-family: "Lora", serif;
   margin: 0 0 20px 0;
   color: #111111;
 }
@@ -951,7 +949,7 @@ ul {
 
               &:checked + label::after {
                 font-family: "Font Awesome 5";
-                content: "\f00c";
+                content: "\2713";
               }
 
               &:disabled + label {
@@ -1899,7 +1897,6 @@ ul {
 
   .item-heading {
     margin-bottom: 0;
-    font-family: "Hind", sans-serif;
     font-size: 24px;
     font-weight: 600;
   }
@@ -1997,7 +1994,6 @@ ul {
 
   .item-heading {
     margin-bottom: 0;
-    font-family: "Hind", sans-serif;
     font-size: 20px;
     font-weight: 500;
     text-align: center;
@@ -2272,10 +2268,10 @@ ul {
       padding-right: 20px;
 
       &:before {
-        content: "\f054";
+        content: "\203A";
         font-family: "Font Awesome 5";
         font-weight: 600;
-        font-size: 14px;
+        font-size: 30px;
         position: absolute;
         right: 0;
         top: 46%;
@@ -2554,7 +2550,7 @@ ul {
 
         &:checked + label::after {
           font-family: "Font Awesome 5";
-          content: "\f00c";
+          content: "\2713";
         }
 
         &:disabled + label {
@@ -2696,8 +2692,6 @@ ul {
     margin-right: 10px;
     display: inline-block;
     position: relative;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
 
     > a {
       display: block;
@@ -2780,17 +2774,17 @@ ul {
           transition: all 0.2s ease-in-out;
 
           &:after {
-            content: "\f04b";
+            content: "\27A4";
             font-family: "Font Awesome 5";
             font-weight: 600;
-            font-size: 6px;
+            font-size: 10px;
             position: absolute;
             color: #ff4a52;
             top: 50%;
             -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
             transform: translateY(-50%);
-            left: -5px;
+            left: -11px;
             z-index: 8;
             -webkit-transition: all 0.2s ease-in-out;
             -moz-transition: all 0.2s ease-in-out;
@@ -2967,7 +2961,6 @@ ul {
       box-shadow: none;
       border: none;
       font-weight: 400;
-      font-family: "Poppins", sans-serif;
       -webkit-transition: all 0.3s ease-out;
       -moz-transition: all 0.3s ease-out;
       -ms-transition: all 0.3s ease-out;
@@ -6692,7 +6685,7 @@ ul {
 
           &:checked + label::after {
             font-family: "Font Awesome 5";
-            content: "\f00c";
+            content: "\2713";
           }
 
           &:disabled + label {
@@ -7969,7 +7962,7 @@ ul {
 
           &:checked + label::after {
             font-family: "Font Awesome 5";
-            content: "\f00c";
+            content: "\2713";
           }
 
           &:disabled + label {
@@ -9178,7 +9171,8 @@ ul {
 
         &:checked + label::after {
           font-family: "Font Awesome 5";
-          content: "\f00c";
+          content: "\2713";
+          font-weight: 700;
         }
 
         &:disabled + label {
@@ -9752,7 +9746,6 @@ ul {
       padding: 30px 50px;
       font-size: 20px;
       color: #5c5c5c;
-      font-family: "Lora", serif;
       font-weight: 700;
       font-style: italic;
       position: relative;

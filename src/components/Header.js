@@ -1,76 +1,75 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ApiBaseURL } from "../ApiBaseURL";
 import { Redirect, Link } from "react-router-dom";
 import { getUser, getToken, removeUserSession } from "../HandleUser";
 
 function Header() {
   const [loggedIn, setloggedIn] = useState(getToken() ? true : false);
-  const { from } = { from: { pathname: "/" } };
-  const [redirect, setRedirect] = useState(false);
-
-  if (redirect) {
-    return <Redirect to={from} />;
-  }
   const logOut = (event) => {
     event.preventDefault();
+    // axios({
+    //   method: "post",
+    //   url: ApiBaseURL("user/logout"),
+    //   data: {
+    //     token: getToken(),
+    //   },
+    // })
+    //   .then((response) => {
+    //     console.log(response.data);
     setloggedIn(false);
+    removeUserSession();
+    // })
+    // .catch((error) => {
+    //   console.log(error.response);
+    // });
+  };
+  const [categories, setCategories] = useState([]);
+  const getCategories = () => {
     axios({
-      method: "post",
-      url: "https://h3-blog.herokuapp.com/user/logout",
-      data: {
-        token: getToken(),
-      },
+      method: "get",
+      url: ApiBaseURL("category/load"),
     })
       .then((response) => {
-        console.log(response.data);
-        removeUserSession();
-        setRedirect(true);
+        // console.log(response.data.data);
+        setCategories(response.data.data);
       })
       .catch((error) => {
         console.log(error.response);
       });
   };
+  useEffect(() => {
+    getCategories();
+  }, []);
   const displayCheck = () => {
     if (loggedIn) {
       var user = getUser();
       return (
-        <nav className="site-nav">
-          <ul id="site-menu" className="site-menu">
+        <li>
+          <a href="#!">{user.name}</a>
+          <ul className="dropdown-menu-col-1">
             <li>
-              <a href="#!">
-                <i className="flaticon-profile mr-3"></i>Đăng Thanh
+              <Link to="/trang-ca-nhan">Trang cá nhân</Link>
+            </li>
+            <li>
+              <a
+                type="button"
+                href="#!"
+                onClick={(event) => {
+                  logOut(event);
+                }}
+              >
+                Đăng xuất
               </a>
-              <ul className="dropdown-menu-col-1">
-                <li>
-                  <Link to="/trang-ca-nhan">Trang cá nhân</Link>
-                </li>
-                <li>
-                  <a
-                    type="button"
-                    href="#!"
-                    onClick={(event) => {
-                      logOut(event);
-                    }}
-                  >
-                    Đăng xuất
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
-        </nav>
+        </li>
       );
     } else {
       return (
-        <div className="nav-action-elements-layout1">
-          <ul>
-            <li>
-              <Link className="login-btn" to="/dang-nhap">
-                <i className="flaticon-profile"></i>Đăng nhập
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <li>
+          <Link to="/dang-nhap">Đăng nhập</Link>
+        </li>
       );
     }
   };
@@ -99,24 +98,17 @@ function Header() {
                       <a href="category.html">Category</a>
                     </li>
                     <li>
-                      <a href="#!">Recipes</a>
+                      <a href="#!">Thể loại</a>
                       <ul className="dropdown-menu-col-1">
-                        <li>
-                          <a href="recipe-with-sidebar.html">
-                            Recipes With Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a href="recipe-without-sidebar.html">
-                            Recipes Without Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a href="single-recipe1.html">Single Recipe 1</a>
-                        </li>
-                        <li>
-                          <a href="single-recipe2.html">Single Recipe 2</a>
-                        </li>
+                        {categories.map((value, key) => {
+                          return (
+                            <li key={key}>
+                              <Link to={"/the-loai/" + value.nameUrl}>
+                                {value.name}
+                              </Link>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </li>
                     <li className="possition-static hide-on-mobile-menu">
@@ -292,7 +284,11 @@ function Header() {
                 </nav>
               </div>
               <div className="col-lg-4 col-md-9 col-sm-8 col-8 d-flex align-items-center justify-content-end">
-                {displayCheck()}
+                <nav className="site-nav">
+                  <ul id="site-menu" className="site-menu">
+                    {displayCheck()}
+                  </ul>
+                </nav>
                 <div className="mob-menu-open toggle-menu">
                   <span className="bar" />
                   <span className="bar" />

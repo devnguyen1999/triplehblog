@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Redirect, Link } from "react-router-dom";
@@ -7,15 +7,18 @@ import { setUserSession } from "../HandleUser";
 import { useForm } from "react-hook-form";
 
 function Login() {
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors, watch } = useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { from } = { from: { pathname: "/" } };
-  const [redirect, setRedirect] = useState(false);
   const errorMessage = (error) => {
-    return <label className="error mt-2">{error}</label>;
+    return <span className="error mt-2 d-block">{error}</span>;
   };
 
+  const password = useRef({});
+  password.current = watch("password", "");
+
+  const [redirect, setRedirect] = useState(false);
+  const { from } = { from: { pathname: "/dang-nhap" } };
   if (redirect) {
     return <Redirect to={from} />;
   }
@@ -24,20 +27,16 @@ function Login() {
     setLoading(true);
     axios({
       method: "post",
-      url: "https://h3-blog.herokuapp.com/user/login",
+      url: "https://h3-blog.herokuapp.com/user/register",
       data: {
         email: values.email,
+        name: values.name,
         password: values.password,
       },
     })
       .then((response) => {
         console.log(response.data);
         setLoading(false);
-        setUserSession(
-          response.data.token,
-          response.data.refreshToken,
-          values.email
-        );
         setRedirect(true);
       })
       .catch((error) => {
@@ -82,7 +81,24 @@ function Login() {
                 </div>
                 <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
+                      <label className="mb-3">Tên của bạn</label>
+                      <input
+                        className="main-input-box"
+                        type="text"
+                        id="name"
+                        name="name"
+                        ref={register({
+                          required: "Tên không được để trống.",
+                          pattern: {
+                            value: /^[A-Za-z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+$/i,
+                            message: "Tên không hợp lệ",
+                          },
+                        })}
+                      />
+                      {errors.name && errorMessage(errors.name.message)}
+                    </div>
+                    <div className="col-md-12 mt-4">
                       <label className="mb-3">Email của bạn</label>
                       <input
                         className="main-input-box"
@@ -90,57 +106,90 @@ function Login() {
                         id="email"
                         name="email"
                         ref={register({
-                          required: true,
-                          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                          required: "Email không được để trống.",
+                          pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "Email không hợp lệ",
+                          },
                         })}
                       />
-                      {errors.email &&
-                        errors.email.type === "required" &&
-                        errorMessage("Email không được để trống.")}
-                      {errors.email &&
-                        errors.email.type === "pattern" &&
-                        errorMessage("Email không hợp lệ.")}
+                      {errors.email && errorMessage(errors.email.message)}
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 mt-4">
                       <label className="mb-3">Mật khẩu</label>
                       <input
                         className="main-input-box"
                         id="password"
                         name="password"
                         ref={register({
-                          required: true,
-                          minLength: 6,
+                          required: "Mật khẩu không được để trống.",
+                          minLength: {
+                            value: 6,
+                            message: "Mật khẩu phải có ít nhất 6 kí tự.",
+                          },
                         })}
                         type="password"
                       />
-                      {errors.password &&
-                        errors.password.type === "required" &&
-                        errorMessage("Mật khẩu không được để trống.")}
-                      {errors.password &&
-                        errors.password.type === "minLength" &&
-                        errorMessage("Mật khẩu phải có ít nhất 6 kí tự.")}
+                      {errors.password && errorMessage(errors.password.message)}
+                    </div>
+                    <div className="col-md-6 mt-4">
+                      <label className="mb-3">Nhập lại mật khẩu</label>
+                      <input
+                        className="main-input-box"
+                        id="repassword"
+                        name="repassword"
+                        ref={register({
+                          required: "Vui lòng nhập lại mật khẩu.",
+                          validate: (value) =>
+                            value === password.current ||
+                            "Nhập lại mật khẩu không trùng khớp.",
+                        })}
+                        type="password"
+                      />
+                      {errors.repassword &&
+                        errorMessage(errors.repassword.message)}
                     </div>
                   </div>
                   <div className="row mt-5">
                     <div className="col-md-12">
                       <div className="checkbox checkbox-primary">
-                        <input id="checkbox1" type="checkbox" />
-                        <label htmlFor="checkbox1">Đồng ý với <strong><Link>Điều khoản sử dụng</Link></strong> của chúng tôi.</label>
+                        <input
+                          id="agree"
+                          name="agree"
+                          type="checkbox"
+                          ref={register({
+                            required: "Bạn chưa đồng ý với Điều khoản sử dụng.",
+                          })}
+                          value={true}
+                        />
+                        <label htmlFor="agree">
+                          Đồng ý với{" "}
+                          <strong>
+                            <Link to="/ve-chung-toi">Điều khoản sử dụng</Link>
+                          </strong>{" "}
+                          của chúng tôi.
+                        </label>
+                        {errors.agree && errorMessage(errors.agree.message)}
                       </div>
                     </div>
                   </div>
                   <div className="btn-area">
-                    <button
+                    <input
                       className="btn-fill btn-primary"
                       type="submit"
-                    >
-                      Đăng ký
-                      <i className="flaticon-next" />
-                    </button>
+                      value={loading ? "Loading..." : "Đăng ký"}
+                      disabled={loading}
+                    />
+                    {error && (
+                      <>
+                        <label className="error mt-2 d-block">{error}</label>
+                      </>
+                    )}
                   </div>
                 </form>
                 <label className="d-block register-now">
-                  Bạn đã có tài khoản? <Link to="/dang-nhap">Đăng nhập ngay</Link>
+                  Bạn đã có tài khoản?{" "}
+                  <Link to="/dang-nhap">Đăng nhập ngay</Link>
                 </label>
               </div>
             </div>

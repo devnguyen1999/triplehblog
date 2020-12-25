@@ -5,6 +5,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
+import { ApiBaseURL } from "../ApiBaseURL";
+import { Redirect, Link } from "react-router-dom";
 
 function Home() {
   let settings = {
@@ -17,20 +19,32 @@ function Home() {
     pauseOnHover: true,
     swipeToSlide: true,
   };
-  const [posts, setPosts] = useState([]);
+  const [slider, setSlider] = useState([]);
+  const [randomPosts, setRandomPosts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const formatTime = (time) => {
+    const d = new Date(time);
+    const result = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+    return result;
+  };
   useEffect(() => {
-    axios({
-      method: "get",
-      url: "https://h3-blog.herokuapp.com/post/load?page=1&pageSize=2",
-    })
-      .then((response) => {
-        setPosts(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+    const requestSlider = axios.get(ApiBaseURL("post/load?page=1&pageSize=3"));
+    const requestRandomPosts = axios.get(
+      ApiBaseURL("post/load?page=1&pageSize=3")
+    );
+    const requestCategories = axios.get(ApiBaseURL("category/load"));
+    axios
+      .all([requestSlider, requestRandomPosts, requestCategories])
+      .then(
+        axios.spread((...responses) => {
+          console.log(responses[0].data.data);
+          setSlider(responses[0].data.data);
+          console.log(responses[1].data.data);
+          setRandomPosts(responses[1].data.data);
+        })
+      )
+      .catch((errors) => {});
   }, []);
-  console.log(posts);
   return (
     <div>
       <Header />
@@ -38,117 +52,49 @@ function Home() {
       <section className="ranna-slider-area">
         <div className="container">
           <Slider {...settings}>
-            <div className="ranna-slider-content-layout1">
-              <figure className="item-figure">
-                <a href="single-recipe1.html">
-                  <img src="../assets/img/slider/slide1-1.jpg" alt="Product" />
-                </a>
-              </figure>
-              <div className="item-content">
-                <span className="sub-title">SALAD</span>
-                <h2 className="item-title">
-                  <a href="single-recipe1.html">Italiano Salad Mixed</a>
-                </h2>
-                <p>
-                  More off this less hello salamander lied porpoise much over
-                  tightly circa outside crud mightily rigorouse.
-                </p>
-                <ul className="entry-meta">
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-clock" />
-                      15 Mins
-                    </a>
-                  </li>
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-user" />
-                      by <span>John Martin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-heart" />
-                      <span>02</span> Likes
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="ranna-slider-content-layout1">
-              <figure className="item-figure">
-                <a href="single-recipe1.html">
-                  <img src="../assets/img/slider/slide1-2.jpg" alt="Product" />
-                </a>
-              </figure>
-              <div className="item-content">
-                <span className="sub-title">SALAD</span>
-                <h2 className="item-title">
-                  <a href="single-recipe1.html">Italiano Salad Mixed</a>
-                </h2>
-                <p>
-                  More off this less hello salamander lied porpoise much over
-                  tightly circa outside crud mightily rigorouse.
-                </p>
-                <ul className="entry-meta">
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-clock" />
-                      15 Mins
-                    </a>
-                  </li>
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-user" />
-                      by <span>John Martin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-heart" />
-                      <span>02</span> Likes
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="ranna-slider-content-layout1">
-              <figure className="item-figure">
-                <a href="single-recipe1.html">
-                  <img src="../assets/img/slider/slide1-3.jpg" alt="Product" />
-                </a>
-              </figure>
-              <div className="item-content">
-                <span className="sub-title">SALAD</span>
-                <h2 className="item-title">
-                  <a href="single-recipe1.html">Italiano Salad Mixed</a>
-                </h2>
-                <p>
-                  More off this less hello salamander lied porpoise much over
-                  tightly circa outside crud mightily rigorouse.
-                </p>
-                <ul className="entry-meta">
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-clock" />
-                      15 Mins
-                    </a>
-                  </li>
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-user" />
-                      by <span>John Martin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="!#">
-                      <i className="fas fa-heart" />
-                      <span>02</span> Likes
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            {slider.map((value, key) => {
+              return (
+                <div className="ranna-slider-content-layout1" key={key}>
+                  <figure className="item-figure">
+                    <Link to={"/" + value.nameUrl}>
+                      <img
+                        src={value.img}
+                        alt={value.title}
+                      />
+                    </Link>
+                  </figure>
+                  <div className="item-content">
+                    <span className="sub-title text-uppercase">
+                      {value.category}
+                    </span>
+                    <h2 className="item-title">
+                      <Link to={"/" + value.nameUrl}>{value.title}</Link>
+                    </h2>
+                    <p>{value.summary}</p>
+                    <ul className="entry-meta">
+                      <li>
+                        <a href="#!">
+                          <i className="fas fa-clock" />
+                          {formatTime(value.createdAt)}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <i className="fas fa-user" />
+                          <span>John Martin</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <i className="fas fa-heart" />
+                          <span>02</span> Likes
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
           </Slider>
         </div>
       </section>
@@ -158,129 +104,51 @@ function Home() {
       <section className="padding-bottom-18">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="product-box-layout1">
-                <figure className="item-figure">
-                  <a href="single-recipe1.html">
-                    <img
-                      src="../assets/img/product/product1.jpg"
-                      alt="Product"
-                    />
-                  </a>
-                </figure>
-                <div className="item-content">
-                  <span className="sub-title">BREAKFAST</span>
-                  <h3 className="item-title">
-                    <a href="single-recipe1.html">
-                      Tomatoes Stuffed with Foie and Chanterelles
-                    </a>
-                  </h3>
-                  <ul className="entry-meta">
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-clock" />
-                        15 Mins
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-user" />
-                        by
-                        <span>John Martin</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-heart" />
-                        <span>02</span> Likes
-                      </a>
-                    </li>
-                  </ul>
+            {slider.map((value, key) => {
+              return (
+                <div className="col-lg-4 col-md-6 col-sm-12" key={key}>
+                  <div className="product-box-layout1">
+                    <figure className="item-figure">
+                      <Link to={"/" + value.nameUrl}>
+                        <img
+                          src={value.img}
+                          alt={value.title}
+                        />
+                      </Link>
+                    </figure>
+                    <div className="item-content">
+                      <span className="sub-title">{value.category}</span>
+                      <h3 className="item-title">
+                        <Link to={"/" + value.nameUrl}>
+                        {value.title}
+                        </Link>
+                      </h3>
+                      <ul className="entry-meta">
+                        <li>
+                          <a href="#!">
+                            <i className="fas fa-clock" />
+                            15 Mins
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#!">
+                            <i className="fas fa-user" />
+                            by
+                            <span>John Martin</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#!">
+                            <i className="fas fa-heart" />
+                            <span>02</span> Likes
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="product-box-layout1">
-                <figure className="item-figure">
-                  <a href="single-recipe1.html">
-                    <img
-                      src="../assets/img/product/product2.jpg"
-                      alt="Product"
-                    />
-                  </a>
-                </figure>
-                <div className="item-content">
-                  <span className="sub-title">DESERT</span>
-                  <h3 className="item-title">
-                    <a href="single-recipe1.html">
-                      Pumpkin Cheesecake With GingersnapCrust
-                    </a>
-                  </h3>
-                  <ul className="entry-meta">
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-clock" />
-                        15 Mins
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-user" />
-                        by
-                        <span>John Martin</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-heart" />
-                        <span>02</span> Likes
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 d-block d-md-none d-lg-block col-sm-12">
-              <div className="product-box-layout1">
-                <figure className="item-figure">
-                  <a href="single-recipe1.html">
-                    <img
-                      src="../assets/img/product/product3.jpg"
-                      alt="Product"
-                    />
-                  </a>
-                </figure>
-                <div className="item-content">
-                  <span className="sub-title">JUICE</span>
-                  <h3 className="item-title">
-                    <a href="single-recipe1.html">
-                      Blueberry Juice with Lemon Crema
-                    </a>
-                  </h3>
-                  <ul className="entry-meta">
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-clock" />
-                        15 Mins
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-user" />
-                        by
-                        <span>John Martin</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-heart" />
-                        <span>02</span> Likes
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -297,7 +165,7 @@ function Home() {
                 <div className="col-12">
                   <div className="product-box-layout1">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product4.jpg"
                           alt="Product"
@@ -307,7 +175,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">PASTA</span>
                       <h2 className="item-title">
-                        <a href="single-recipe1.html">
+                        <a href="#!">
                           Chanterelle and Porcini Mushroom Recipes
                         </a>
                       </h2>
@@ -344,7 +212,7 @@ function Home() {
                 <div className="col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout1">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product5.jpg"
                           alt="Product"
@@ -354,7 +222,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">CHICKEN</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Asian Chicken Noodles</a>
+                        <a href="#!">Asian Chicken Noodles</a>
                       </h3>
                       <p>
                         More off this less hello salamander lied porpoise much
@@ -387,7 +255,7 @@ function Home() {
                 <div className="col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout1">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product6.jpg"
                           alt="Product"
@@ -397,7 +265,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">SALAD</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Italiano Salad Mixed</a>
+                        <a href="#!">Italiano Salad Mixed</a>
                       </h3>
                       <p>
                         More off this less hello salamander lied porpoise much
@@ -430,7 +298,7 @@ function Home() {
                 <div className="col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout1">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product7.jpg"
                           alt="Product"
@@ -440,7 +308,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">DINNER</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Maxican Dessert</a>
+                        <a href="#!">Maxican Dessert</a>
                       </h3>
                       <p>
                         More off this less hello salamander lied porpoise much
@@ -473,7 +341,7 @@ function Home() {
                 <div className="col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout1">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product8.jpg"
                           alt="Product"
@@ -483,7 +351,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">JUICE</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Soypan Fruits Juice</a>
+                        <a href="#!">Soypan Fruits Juice</a>
                       </h3>
                       <p>
                         More off this less hello salamander lied porpoise much
@@ -516,7 +384,7 @@ function Home() {
                 <div className="col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout1">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product9.jpg"
                           alt="Product"
@@ -526,7 +394,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">BREAKFAST</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Crepes with Forest</a>
+                        <a href="#!">Crepes with Forest</a>
                       </h3>
                       <p>
                         More off this less hello salamander lied porpoise much
@@ -559,7 +427,7 @@ function Home() {
                 <div className="col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout1">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product10.jpg"
                           alt="Product"
@@ -569,7 +437,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">DINNER</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Asian Chicken Noodles</a>
+                        <a href="#!">Asian Chicken Noodles</a>
                       </h3>
                       <p>
                         More off this less hello salamander lied porpoise much
@@ -898,7 +766,7 @@ function Home() {
             <div className="col-lg-4 col-md-6 col-sm-12 col-12">
               <div className="product-box-layout2">
                 <figure className="item-figure">
-                  <a href="single-recipe1.html">
+                  <a href="#!">
                     <img
                       src="../assets/img/product/product11.jpg"
                       alt="Product"
@@ -908,9 +776,7 @@ function Home() {
                 <div className="item-content">
                   <span className="sub-title">BREAKFAST</span>
                   <h3 className="item-title">
-                    <a href="single-recipe1.html">
-                      Tomatoes Stuffed with Foie and Chanterelles
-                    </a>
+                    <a href="#!">Tomatoes Stuffed with Foie and Chanterelles</a>
                   </h3>
                   <ul className="entry-meta">
                     <li>
@@ -939,7 +805,7 @@ function Home() {
             <div className="col-lg-4 col-md-6 col-sm-12 col-12">
               <div className="product-box-layout2">
                 <figure className="item-figure">
-                  <a href="single-recipe1.html">
+                  <a href="#!">
                     <img
                       src="../assets/img/product/product12.jpg"
                       alt="Product"
@@ -949,9 +815,7 @@ function Home() {
                 <div className="item-content">
                   <span className="sub-title">DESERT</span>
                   <h3 className="item-title">
-                    <a href="single-recipe1.html">
-                      Pumpkin Cheesecake With GingersnapCrust
-                    </a>
+                    <a href="#!">Pumpkin Cheesecake With GingersnapCrust</a>
                   </h3>
                   <ul className="entry-meta">
                     <li>
@@ -980,7 +844,7 @@ function Home() {
             <div className="col-lg-4 d-block d-md-none d-lg-block col-sm-12 col-12">
               <div className="product-box-layout2">
                 <figure className="item-figure">
-                  <a href="single-recipe1.html">
+                  <a href="#!">
                     <img
                       src="../assets/img/product/product13.jpg"
                       alt="Product"
@@ -990,9 +854,7 @@ function Home() {
                 <div className="item-content">
                   <span className="sub-title">JUICE</span>
                   <h3 className="item-title">
-                    <a href="single-recipe1.html">
-                      Blueberry Juice with Lemon Crema
-                    </a>
+                    <a href="#!">Blueberry Juice with Lemon Crema</a>
                   </h3>
                   <ul className="entry-meta">
                     <li>
@@ -1034,7 +896,7 @@ function Home() {
                 <div className="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout3">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product14.jpg"
                           alt="Product"
@@ -1044,7 +906,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">BREAKFAST</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Asian Chicken Noodles</a>
+                        <a href="#!">Asian Chicken Noodles</a>
                       </h3>
                       <p>
                         Pro sint falli definitiones noel ei verear intellegatpri
@@ -1079,7 +941,7 @@ function Home() {
                 <div className="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout3">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product15.jpg"
                           alt="Product"
@@ -1089,7 +951,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">SEA FOOD</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Italiano Salad Mixed</a>
+                        <a href="#!">Italiano Salad Mixed</a>
                       </h3>
                       <p>
                         Pro sint falli definitiones noel ei verear intellegatpri
@@ -1124,7 +986,7 @@ function Home() {
                 <div className="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout3">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product16.jpg"
                           alt="Product"
@@ -1134,7 +996,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">SALAD</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Maxican Dessert</a>
+                        <a href="#!">Maxican Dessert</a>
                       </h3>
                       <p>
                         Pro sint falli definitiones noel ei verear intellegatpri
@@ -1169,7 +1031,7 @@ function Home() {
                 <div className="d-lg-block d-xl-none col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="product-box-layout3">
                     <figure className="item-figure">
-                      <a href="single-recipe1.html">
+                      <a href="#!">
                         <img
                           src="../assets/img/product/product14.jpg"
                           alt="Product"
@@ -1179,7 +1041,7 @@ function Home() {
                     <div className="item-content">
                       <span className="sub-title">BREAKFAST</span>
                       <h3 className="item-title">
-                        <a href="single-recipe1.html">Asian Chicken Noodles</a>
+                        <a href="#!">Asian Chicken Noodles</a>
                       </h3>
                       <p>
                         Pro sint falli definitiones noel ei verear intellegatpri
@@ -1231,7 +1093,7 @@ function Home() {
                       <div className="item-content">
                         <span className="ctg-name">BREAKFAST</span>
                         <h4 className="item-title">
-                          <a href="single-recipe1.html">Baked Garlic Prawn</a>
+                          <a href="#!">Baked Garlic Prawn</a>
                         </h4>
                         <p>
                           Definitiones noel ei verear intelle gatpri civibus
@@ -1250,7 +1112,7 @@ function Home() {
                       <div className="item-content">
                         <span className="ctg-name">DINNER</span>
                         <h4 className="item-title">
-                          <a href="single-recipe1.html">Baked Garlic Prawn</a>
+                          <a href="#!">Baked Garlic Prawn</a>
                         </h4>
                         <p>
                           Definitiones noel ei verear intelle gatpri civibus
@@ -1269,7 +1131,7 @@ function Home() {
                       <div className="item-content">
                         <span className="ctg-name">SALAD</span>
                         <h4 className="item-title">
-                          <a href="single-recipe1.html">Baked Garlic Prawn</a>
+                          <a href="#!">Baked Garlic Prawn</a>
                         </h4>
                         <p>
                           Definitiones noel ei verear intelle gatpri civibus
@@ -1331,7 +1193,7 @@ function Home() {
         </div>
         <ul className="instagram-feed-figure">
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure1.jpg"
                 alt="Social"
@@ -1339,7 +1201,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure2.jpg"
                 alt="Social"
@@ -1347,7 +1209,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure3.jpg"
                 alt="Social"
@@ -1355,7 +1217,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure4.jpg"
                 alt="Social"
@@ -1363,7 +1225,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure5.jpg"
                 alt="Social"
@@ -1371,7 +1233,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure6.jpg"
                 alt="Social"
@@ -1379,7 +1241,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure7.jpg"
                 alt="Social"
@@ -1387,7 +1249,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="single-recipe1.html">
+            <a href="#!">
               <img
                 src="../assets/img/social-figure/social-figure8.jpg"
                 alt="Social"

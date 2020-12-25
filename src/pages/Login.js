@@ -3,21 +3,26 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
-import { setUserSession } from "../HandleUser";
+import { getUser, setUserSession } from "../HandleUser";
 import { useForm } from "react-hook-form";
 
 function Signup() {
   const { handleSubmit, register, errors } = useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { from } = { from: { pathname: "/dang-nhap" } };
   const [redirect, setRedirect] = useState(false);
   const errorMessage = (error) => {
-    return <label className="error mt-2">{error}</label>;
+    return <span className="error mt-2 d-block">{error}</span>;
   };
 
   if (redirect) {
-    return <Redirect to={from} />;
+    return (
+      <Redirect
+        to={{
+          pathname: "/",
+        }}
+      />
+    );
   }
   const onSubmit = (values) => {
     setError(null);
@@ -36,7 +41,7 @@ function Signup() {
         setUserSession(
           response.data.token,
           response.data.refreshToken,
-          values.email
+          response.data.user
         );
         setRedirect(true);
       })
@@ -90,16 +95,14 @@ function Signup() {
                         id="email"
                         name="email"
                         ref={register({
-                          required: true,
-                          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                          required: "Email không được để trống.",
+                          pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "Email không hợp lệ",
+                          },
                         })}
                       />
-                      {errors.email &&
-                        errors.email.type === "required" &&
-                        errorMessage("Email không được để trống.")}
-                      {errors.email &&
-                        errors.email.type === "pattern" &&
-                        errorMessage("Email không hợp lệ.")}
+                      {errors.email && errorMessage(errors.email.message)}
                     </div>
                     <div className="col-md-6">
                       <label className="mb-3">Mật khẩu</label>
@@ -108,26 +111,24 @@ function Signup() {
                         id="password"
                         name="password"
                         ref={register({
-                          required: true,
-                          minLength: 6,
+                          required: "Mật khẩu không được để trống.",
+                          minLength: {
+                            value: 6,
+                            message: "Mật khẩu phải có ít nhất 6 kí tự.",
+                          },
                         })}
                         type="password"
                       />
-                      {errors.password &&
-                        errors.password.type === "required" &&
-                        errorMessage("Mật khẩu không được để trống.")}
-                      {errors.password &&
-                        errors.password.type === "minLength" &&
-                        errorMessage("Mật khẩu phải có ít nhất 6 kí tự.")}
+                      {errors.password && errorMessage(errors.password.message)}
                     </div>
                   </div>
                   <div className="row mt-5">
-                    <div className="col-md-6">
+                    {/* <div className="col-md-6">
                       <div className="checkbox checkbox-primary">
                         <input id="checkbox1" type="checkbox" />
                         <label htmlFor="checkbox1">Nhớ tài khoản</label>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="col-md-6">
                       <label className="lost-password">
                         <Link to="/quen-mat-khau">Quên mật khẩu</Link>
@@ -135,13 +136,17 @@ function Signup() {
                     </div>
                   </div>
                   <div className="btn-area">
-                    <button
+                    <input
                       className="btn-fill btn-primary"
                       type="submit"
-                    >
-                      Đăng nhập
-                      <i className="flaticon-next" />
-                    </button>
+                      value={loading ? "Loading..." : "Đăng nhập"}
+                      disabled={loading}
+                    />
+                    {error && (
+                      <>
+                        <label className="error mt-2 d-block">{error}</label>
+                      </>
+                    )}
                   </div>
                 </form>
                 <label className="d-block register-now">
