@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import { getUser, setUserSession } from "../HandleUser";
 import { useForm } from "react-hook-form";
+import { ApiBaseURL } from "../ApiBaseURL";
 
 function Signup() {
   const { handleSubmit, register, errors } = useForm();
@@ -15,21 +16,16 @@ function Signup() {
     return <span className="error mt-2 d-block">{error}</span>;
   };
 
+  const { from } = { from: { pathname: "/" } };
   if (redirect) {
-    return (
-      <Redirect
-        to={{
-          pathname: "/",
-        }}
-      />
-    );
+    return <Redirect to={from} />;
   }
   const onSubmit = (values) => {
     setError(null);
     setLoading(true);
     axios({
       method: "post",
-      url: "https://h3-blog.herokuapp.com/user/login",
+      url: ApiBaseURL("user/login"),
       data: {
         email: values.email,
         password: values.password,

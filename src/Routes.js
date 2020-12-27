@@ -9,6 +9,7 @@ import PostDetail from "./pages/PostDetail";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Category from "./pages/Category";
+import Search from "./pages/Search";
 function Routes() {
   return (
       <Switch>
@@ -27,9 +28,15 @@ function Routes() {
         <Route path="/ve-chung-toi">
           <About />
         </Route>
+        <Route path="/trang-ca-nhan">
+          <About />
+        </Route>
         <PublicRoute path="/dang-nhap" component={Login}/>
         <PublicRoute path="/dang-ky" component={Signup}/>
         <PublicRoute path="/quen-mat-khau" component={Login}/>
+        <Route path="/tim-kiem">
+          <Search />
+        </Route>
         <Route path="/:slug" children={<PostDetail />} />
       </Switch>
   );

@@ -103,7 +103,9 @@ function Header() {
                         {categories.map((value, key) => {
                           return (
                             <li key={key}>
-                              <Link to={"/the-loai/" + value.nameUrl}>
+                              <Link
+                                to={"/the-loai/" + value.nameUrl}
+                              >
                                 {value.name}
                               </Link>
                             </li>
@@ -355,13 +357,9 @@ function Header() {
                   <ul>
                     <li>
                       <div className="header-search-box">
-                        <a
-                          href="#search"
-                          title="Search"
-                          className="search-button"
-                        >
+                        <Link to="/tim-kiem" className="search-button">
                           <i className="flaticon-search" />
-                        </a>
+                        </Link>
                       </div>
                     </li>
                   </ul>

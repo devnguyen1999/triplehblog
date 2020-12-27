@@ -353,12 +353,11 @@
   /*-------------------------------------
     Window On Load Function
     -------------------------------------*/
-  $(window).on("load", function () {
-    // Page Preloader
-    $("#preloader").fadeOut("slow", function () {
-      $(this).remove();
-    });
-  });
+  // $(window).on("load", function () {
+  //   $("#preloader").fadeOut("slow", function () {
+  //     $(this).remove();
+  //   });
+  // });
 
   /*---------------------------------------
     Summernote

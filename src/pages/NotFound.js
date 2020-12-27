@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
@@ -14,13 +15,13 @@ function NotFound() {
               <div className="error-content-box">
                 <div className="error-figure-wrap">
                   <img
-                    src="http://localhost:3000/sites/assets/images/figure/404.png"
+                    src="../assets/img/figure/404.png"
                     alt={404}
                     className="img-fluid"
                   />
                   <div className="error-center-figure">
                     <img
-                      src="http://localhost:3000/sites/assets/images/figure/404-middle.png"
+                      src="../assets/img/figure/404-middle.png"
                       alt={404}
                       className="img-fluid"
                     />
@@ -31,9 +32,9 @@ function NotFound() {
                   The page you are looking is not available or has been removed.
                   Try going to Home Page by using the button below.
                 </p>
-                <a href="index.html" className="item-btn">
-                  GO TO HOME PAGE
-                </a>
+                <Link to="/" className="item-btn">
+                  ĐI ĐẾN TRANG CHỦ
+                </Link>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import { setUserSession } from "../HandleUser";
 import { useForm } from "react-hook-form";
+import { ApiBaseURL } from "../ApiBaseURL";
 
 function Login() {
   const { handleSubmit, register, errors, watch } = useForm();
@@ -27,7 +28,7 @@ function Login() {
     setLoading(true);
     axios({
       method: "post",
-      url: "https://h3-blog.herokuapp.com/user/register",
+      url: ApiBaseURL("user/register"),
       data: {
         email: values.email,
         name: values.name,
