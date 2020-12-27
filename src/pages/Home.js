@@ -419,7 +419,7 @@ function Home() {
                           {value.category}
                         </span>
                         <h3 className="item-title">
-                          <a href="#!">{value.title}</a>
+                          <Link to={"/" + value.nameUrl}>{value.title}</Link>
                         </h3>
                         <ul className="entry-meta">
                           <li>
@@ -503,26 +503,26 @@ function Home() {
                   <div className="widget-featured-feed">
                     <Slider {...settings}>
                       {trendingPosts.map((value, key) => {
-                          return (
-                            <div className="featured-box-layout1" key={key}>
-                              <div className="item-img">
-                                <img
-                                  src={value.img}
-                                  alt={value.title}
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div className="item-content">
-                                <span className="ctg-name text-uppercase"></span>
-                                <h4 className="item-title">
-                                  <Link to={"/" + value.nameUrl}>
-                                    {value.title}
-                                  </Link>
-                                </h4>
-                                <p>{value.summary}</p>
-                              </div>
+                        return (
+                          <div className="featured-box-layout1" key={key}>
+                            <div className="item-img">
+                              <img
+                                src={value.img}
+                                alt={value.title}
+                                className="img-fluid"
+                              />
                             </div>
-                          );
+                            <div className="item-content">
+                              <span className="ctg-name text-uppercase"></span>
+                              <h4 className="item-title">
+                                <Link to={"/" + value.nameUrl}>
+                                  {value.title}
+                                </Link>
+                              </h4>
+                              <p>{value.summary}</p>
+                            </div>
+                          </div>
+                        );
                       })}
                     </Slider>
                   </div>
