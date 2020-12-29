@@ -37,39 +37,6 @@ function Category() {
     const result = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
     return result;
   };
-  const getPosts = () => {
-    setLoadinggg(true);
-    axios({
-      method: "get",
-      url: ApiBaseURL("category/loadDetaiDetaiCategory?nameUrl=" + slug),
-    })
-      .then((response) => {
-        setCategory(response.data.data);
-        axios({
-          method: "get",
-          url: ApiBaseURL(
-            "post/loadByCategory?page=" +
-              page +
-              "&pageSize=" +
-              pageSize +
-              "&category=" +
-              response.data.data.name
-          ),
-        })
-          .then((response) => {
-            setPosts(response.data.data);
-            console.log(response.data.data);
-            setTotal(response.data.total);
-            setLoadinggg(false);
-          })
-          .catch((error) => {});
-      })
-      .catch((error) => {
-        if (error.response.status === 404) {
-          setNotFound(true);
-        }
-      });
-  };
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
     axios({
@@ -100,8 +67,38 @@ function Category() {
       .catch((error) => {});
   }, []);
   useEffect(() => {
-    console.log(slug);
-    getPosts();
+    setLoadinggg(true);
+    axios({
+      method: "get",
+      url: ApiBaseURL("category/loadDetaiDetaiCategory?nameUrl=" + slug),
+    })
+      .then((response) => {
+        document.title = response.data.data.name;
+        setCategory(response.data.data);
+        axios({
+          method: "get",
+          url: ApiBaseURL(
+            "post/loadByCategory?page=" +
+              page +
+              "&pageSize=" +
+              pageSize +
+              "&category=" +
+              response.data.data.name
+          ),
+        })
+          .then((response) => {
+            setPosts(response.data.data);
+            console.log(response.data.data);
+            setTotal(response.data.total);
+            setLoadinggg(false);
+          })
+          .catch((error) => {});
+      })
+      .catch((error) => {
+        if (error.response.status === 404) {
+          setNotFound(true);
+        }
+      });
   }, [slug]);
   const { from } = { from: { pathname: "/loi-404" } };
   if (notFound) {

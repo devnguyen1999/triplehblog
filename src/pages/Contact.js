@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 function Contact() {
+  useEffect(() => {document.title = "Liên hệ";}, []);
   return (
     <div>
       <Header />
@@ -110,7 +111,7 @@ function Contact() {
                 </div>
                 <div className="col-12 form-group mb-0 mt-3">
                   <button type="submit" className="item-btn">
-                    GỬI PHẢN HÒI
+                    GỬI PHẢN HỒI
                   </button>
                 </div>
                 <div className="form-response" />
@@ -120,7 +121,7 @@ function Contact() {
         </div>
         <div className="contact-box-right">
           <div className="google-map-wrap-layout1">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2324288146724!2d106.80161941489283!3d10.869918392258182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527587e9ad5bf%3A0xafa66f9c8be3c91!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiDEkEhRRyBUUC5IQ00!5e0!3m2!1svi!2s!4v1608852796214!5m2!1svi!2s" />
+            <iframe title="This is a unique title" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2324288146724!2d106.80161941489283!3d10.869918392258182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527587e9ad5bf%3A0xafa66f9c8be3c91!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiDEkEhRRyBUUC5IQ00!5e0!3m2!1svi!2s!4v1608852796214!5m2!1svi!2s" />
           </div>
         </div>
       </section>

@@ -6,11 +6,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
-import { Redirect, Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [loadinggg, setLoadinggg] = useState(true);
+
+  function Arrow() {
+    return <span className="d-none"></span>;
+  }
+
   let settings = {
+    lazyLoad: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -19,6 +25,8 @@ function Home() {
     autoplaySpeed: 3000,
     pauseOnHover: true,
     swipeToSlide: true,
+    prevArrow: <Arrow/>,
+    nextArrow: <Arrow/>,
   };
   const [slider, setSlider] = useState([]);
   const [randomPosts, setRandomPosts] = useState([]);
@@ -33,6 +41,7 @@ function Home() {
     return result;
   };
   useEffect(() => {
+    document.title = "Triple H Blog";
     const requestSlider = axios.get(ApiBaseURL("post/load?page=1&pageSize=3"));
     const requestRandomPosts = axios.get(ApiBaseURL("post/loadRandom"));
     const requestTrendingPosts = axios.get(ApiBaseURL("post/loadMostViews"));
@@ -79,13 +88,11 @@ function Home() {
                 return (
                   <div className="ranna-slider-content-layout1" key={key}>
                     <figure className="item-figure">
-                      <Link to={"/" + value.nameUrl}>
                         <img
                           className="img-slider"
                           src={value.img}
                           alt={value.title}
                         />
-                      </Link>
                     </figure>
                     <div className="item-content">
                       <span className="sub-title text-uppercase">

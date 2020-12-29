@@ -112,6 +112,7 @@ function PostDetail() {
       ])
       .then(
         axios.spread((...responses) => {
+          document.title = responses[0].data.title;
           setPost(responses[0].data);
           console.log(responses[0].data.comments);
           setComments(responses[0].data.comments);
@@ -166,7 +167,7 @@ function PostDetail() {
                 <div className="single-blog-box">
                   <div className="main-figure">
                     <a href="#!">
-                      <img src={post.img} alt={post.title} />
+                      <img src={post.img} alt={post.title} className="img-detail"/>
                     </a>
                   </div>
                   <div className="blog-content">
@@ -247,6 +248,7 @@ function PostDetail() {
                             <div className="media media-none--xs">
                               <img
                                 src="../assets/img/blog/comment2.jpg"
+                                alt="Avatar"
                                 className="media-img-auto"
                               />
                               <div className="media-body">

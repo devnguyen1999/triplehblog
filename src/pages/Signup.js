@@ -1,13 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
-import { setUserSession } from "../HandleUser";
 import { useForm } from "react-hook-form";
 import { ApiBaseURL } from "../ApiBaseURL";
 
-function Login() {
+function Signup() {
   const { handleSubmit, register, errors, watch } = useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,9 +19,7 @@ function Login() {
 
   const [redirect, setRedirect] = useState(false);
   const { from } = { from: { pathname: "/dang-nhap" } };
-  if (redirect) {
-    return <Redirect to={from} />;
-  }
+
   const onSubmit = (values) => {
     setError(null);
     setLoading(true);
@@ -49,6 +46,10 @@ function Login() {
         }
       });
   };
+  useEffect(() => {document.title = "Đăng ký";}, []);
+  if (redirect) {
+    return <Redirect to={from} />;
+  }
   return (
     <div>
       <Header />
@@ -71,16 +72,16 @@ function Login() {
         </div>
       </section>
       {/* Inne Page Banner Area End Here */}
-      {/* Login Area Start Here */}
-      <section className="login-page-wrap padding-top-80 padding-bottom-50">
+      {/* Signup Area Start Here */}
+      <section className="Signup-page-wrap padding-top-80 padding-bottom-50">
         <div className="container">
           <div className="row gutters-60">
             <div className="col-lg-8">
-              <div className="login-box-layout1">
+              <div className="Signup-box-layout1">
                 <div className="section-heading heading-dark">
                   <h2 className="item-heading">FORM ĐĂNG KÝ</h2>
                 </div>
-                <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+                <form className="Signup-form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="row">
                     <div className="col-md-12">
                       <label className="mb-3">Tên của bạn</label>
@@ -216,10 +217,10 @@ function Login() {
           </div>
         </div>
       </section>
-      {/* Login Area End Here */}
+      {/* Signup Area End Here */}
       <Footer />
     </div>
   );
 }
 
-export default Login;
+export default Signup;

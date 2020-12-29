@@ -88,6 +88,7 @@ function Search() {
       .catch((error) => {});
   };
   useEffect(() => {
+    document.title = "Tìm kiếm";
     const requestPosts = axios.get(
       ApiBaseURL("post/load?page=" + page + "&pageSize=" + pageSize)
     );

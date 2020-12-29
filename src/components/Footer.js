@@ -19,22 +19,22 @@ function Footer() {
           <div className="footer-menu">
             <ul>
               <li>
-                <a href="#">FACEBOOK</a>
+                <a href="#!">FACEBOOK</a>
               </li>
               <li>
-                <a href="#">TWITTER</a>
+                <a href="#!">TWITTER</a>
               </li>
               <li>
-                <a href="#">INSTAGRAM</a>
+                <a href="#!">INSTAGRAM</a>
               </li>
               <li>
-                <a href="#">PINTEREST</a>
+                <a href="#!">PINTEREST</a>
               </li>
               <li>
-                <a href="#">GOOGLEPLUS</a>
+                <a href="#!">GOOGLEPLUS</a>
               </li>
               <li>
-                <a href="#">YOUTUBE</a>
+                <a href="#!">YOUTUBE</a>
               </li>
             </ul>
           </div>

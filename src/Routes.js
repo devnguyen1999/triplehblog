@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { PublicRoute } from './PublicRoute';
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";

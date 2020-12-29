@@ -1,28 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
-import { Redirect, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getUser, getToken, removeUserSession } from "../HandleUser";
 
 function Header() {
+  let location = useLocation();
   const [loggedIn, setloggedIn] = useState(getToken() ? true : false);
   const logOut = (event) => {
     event.preventDefault();
-    // axios({
-    //   method: "post",
-    //   url: ApiBaseURL("user/logout"),
-    //   data: {
-    //     token: getToken(),
-    //   },
-    // })
-    //   .then((response) => {
-    //     console.log(response.data);
     setloggedIn(false);
     removeUserSession();
-    // })
-    // .catch((error) => {
-    //   console.log(error.response);
-    // });
   };
   const [categories, setCategories] = useState([]);
   const getCategories = () => {
@@ -31,7 +19,6 @@ function Header() {
       url: ApiBaseURL("category/load"),
     })
       .then((response) => {
-        // console.log(response.data.data);
         setCategories(response.data.data);
       })
       .catch((error) => {
@@ -68,7 +55,10 @@ function Header() {
     } else {
       return (
         <li>
-          <Link to="/dang-nhap">Đăng nhập</Link>
+          <Link to={{
+              pathname: "/dang-nhap",
+              params: { from: location }
+            }}>Đăng nhập</Link>
         </li>
       );
     }
@@ -95,9 +85,6 @@ function Header() {
                       <Link to="/">Trang chủ</Link>
                     </li>
                     <li>
-                      <a href="category.html">Category</a>
-                    </li>
-                    <li>
                       <a href="#!">Thể loại</a>
                       <ul className="dropdown-menu-col-1">
                         {categories.map((value, key) => {
@@ -111,169 +98,6 @@ function Header() {
                             </li>
                           );
                         })}
-                      </ul>
-                    </li>
-                    <li className="possition-static hide-on-mobile-menu">
-                      <a href="#!">Pages</a>
-                      <div className="template-mega-menu">
-                        <div className="container">
-                          <div className="row">
-                            <div className="col-4">
-                              <div className="menu-ctg-title">Home</div>
-                              <ul className="sub-menu">
-                                <li>
-                                  <a href="index.html">
-                                    <i className="fas fa-home" />
-                                    Home 1
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="index2.html">
-                                    <i className="fas fa-home" />
-                                    Home 2
-                                  </a>
-                                </li>
-                              </ul>
-                              <div className="menu-ctg-title">Recipes</div>
-                              <ul className="sub-menu">
-                                <li>
-                                  <a href="recipe-with-sidebar.html">
-                                    <i className="fas fa-utensils" />
-                                    Recipes With Sidebar
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="recipe-without-sidebar.html">
-                                    <i className="fas fa-utensils" />
-                                    Recipes Without Sidebar
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-4">
-                              <ul className="sub-menu">
-                                <li>
-                                  <a href="single-recipe1.html">
-                                    <i className="fas fa-utensils" />
-                                    Single Recipe 1
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="single-recipe2.html">
-                                    <i className="fas fa-utensils" />
-                                    Single Recipe 2
-                                  </a>
-                                </li>
-                              </ul>
-                              <div className="menu-ctg-title">Other Pages</div>
-                              <ul className="sub-menu">
-                                <li>
-                                  <a href="about.html">
-                                    <i className="fab fa-cloudversify" />
-                                    About
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="author.html">
-                                    <i className="fas fa-user" />
-                                    Author
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="single-author.html">
-                                    <i className="fas fa-user" />
-                                    Author Details
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-4">
-                              <ul className="sub-menu">
-                                <li>
-                                  <a href="submit-recipe.html">
-                                    <i className="far fa-share-square" />
-                                    Submit Recipe
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="login.html">
-                                    <i className="fas fa-lock" />
-                                    Login
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="404.html">
-                                    <i className="fas fa-exclamation-triangle" />
-                                    404 Error
-                                  </a>
-                                </li>
-                              </ul>
-                              <div className="menu-ctg-title">Shop</div>
-                              <ul className="sub-menu">
-                                <li>
-                                  <a href="shop.html">
-                                    <i className="fas fa-shopping-cart" />
-                                    Shop
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="single-shop.html">
-                                    <i className="fas fa-shopping-cart" />
-                                    Shop Details
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="hide-on-desktop-menu">
-                      <a href="#!">Pages</a>
-                      <ul className="dropdown-menu-col-1">
-                        <li>
-                          <a href="about.html">About</a>
-                        </li>
-                        <li>
-                          <a href="author.html">Author</a>
-                        </li>
-                        <li>
-                          <a href="single-author.html">Author Details</a>
-                        </li>
-                        <li>
-                          <a href="submit-recipe.html">Submit Recipe</a>
-                        </li>
-                        <li>
-                          <a href="login.html">Login</a>
-                        </li>
-                        <li>
-                          <a href="login.html">404 Error</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="#!">Blog</a>
-                      <ul className="dropdown-menu-col-1">
-                        <li>
-                          <a href="blog-grid.html">Blog Grid</a>
-                        </li>
-                        <li>
-                          <a href="blog-list.html">Blog List</a>
-                        </li>
-                        <li>
-                          <a href="single-blog.html">Blog Details</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="#!">Shop</a>
-                      <ul className="dropdown-menu-col-1">
-                        <li>
-                          <a href="shop.html">Shop</a>
-                        </li>
-                        <li>
-                          <a href="single-shop.html">Shop Details</a>
-                        </li>
                       </ul>
                     </li>
                     <li>

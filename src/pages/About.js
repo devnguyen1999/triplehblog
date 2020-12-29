@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 function About() {
+  useEffect(() => {document.title = "Về chúng tôi";}, []);
   return (
     <div>
         <Header/>
@@ -108,37 +109,37 @@ function About() {
                 <div className="widget-follow-us">
                   <ul>
                     <li className="single-item">
-                      <a href="#">
+                      <a href="#!">
                         <i className="fab fa-facebook-f" />
                         Follow
                       </a>
                     </li>
                     <li className="single-item">
-                      <a href="#">
+                      <a href="#!">
                         <i className="fab fa-twitter" />
                         Follow
                       </a>
                     </li>
                     <li className="single-item">
-                      <a href="#">
+                      <a href="#!">
                         <i className="fab fa-linkedin-in" />
                         Follow
                       </a>
                     </li>
                     <li className="single-item">
-                      <a href="#">
+                      <a href="#!">
                         <i className="fab fa-pinterest-p" />
                         Follow
                       </a>
                     </li>
                     <li className="single-item">
-                      <a href="#">
+                      <a href="#!">
                         <i className="fab fa-instagram" />
                         Follow
                       </a>
                     </li>
                     <li className="single-item">
-                      <a href="#">
+                      <a href="#!">
                         <i className="fab fa-youtube" />
                         Subscribe
                       </a>
@@ -154,7 +155,7 @@ function About() {
                   <ul className="block-list">
                     <li className="single-item">
                       <div className="item-img">
-                        <a href="#">
+                        <a href="#!">
                           <img src="../assets/img/product/latest1.jpg" alt="Post" />
                         </a>
                         <div className="count-number">1</div>
@@ -162,7 +163,7 @@ function About() {
                       <div className="item-content">
                         <div className="item-ctg">DESERT</div>
                         <h4 className="item-title">
-                          <a href="#">
+                          <a href="#!">
                             Salami Oven Roasted are Mozzarella Oelette
                           </a>
                         </h4>
@@ -176,7 +177,7 @@ function About() {
                     </li>
                     <li className="single-item">
                       <div className="item-img">
-                        <a href="#">
+                        <a href="#!">
                           <img src="../assets/img/product/latest2.jpg" alt="Post" />
                         </a>
                         <div className="count-number">2</div>
@@ -184,7 +185,7 @@ function About() {
                       <div className="item-content">
                         <div className="item-ctg">DESERT</div>
                         <h4 className="item-title">
-                          <a href="#">
+                          <a href="#!">
                             Salami Oven Roasted are Mozzarella Oelette
                           </a>
                         </h4>
@@ -198,7 +199,7 @@ function About() {
                     </li>
                     <li className="single-item">
                       <div className="item-img">
-                        <a href="#">
+                        <a href="#!">
                           <img src="../assets/img/product/latest3.jpg" alt="Post" />
                         </a>
                         <div className="count-number">3</div>
@@ -206,7 +207,7 @@ function About() {
                       <div className="item-content">
                         <div className="item-ctg">DESERT</div>
                         <h4 className="item-title">
-                          <a href="#">
+                          <a href="#!">
                             Salami Oven Roasted are Mozzarella Oelette
                           </a>
                         </h4>
@@ -220,7 +221,7 @@ function About() {
                     </li>
                     <li className="single-item">
                       <div className="item-img">
-                        <a href="#">
+                        <a href="#!">
                           <img src="../assets/img/product/latest4.jpg" alt="Post" />
                         </a>
                         <div className="count-number">4</div>
@@ -228,7 +229,7 @@ function About() {
                       <div className="item-content">
                         <div className="item-ctg">DESERT</div>
                         <h4 className="item-title">
-                          <a href="#">
+                          <a href="#!">
                             Salami Oven Roasted are Mozzarella Oelette
                           </a>
                         </h4>
@@ -245,7 +246,7 @@ function About() {
               </div>
               <div className="widget">
                 <div className="widget-ad">
-                  <a href="#">
+                  <a href="#!">
                     <img
                       src="../assets/img/figure/figure4.jpg"
                       alt="Ad"
