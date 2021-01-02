@@ -1,38 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
+import { FormatTime } from "../helpers/FormatTime";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
+import LatestPosts from "../components/LatestPosts";
+import FeaturedPosts from "../components/FeaturedPosts";
+import HotTags from "../components/HotTags";
 function Search() {
   const [loadinggg, setLoadinggg] = useState(true);
   const [searching, setSearching] = useState(false);
   const [searchMessage, setSearchMessage] = useState();
-  let settings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    swipeToSlide: true,
-  };
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const pageSize = 10;
-  const [trendingPosts, setTrendingPosts] = useState([]);
-  const [latestPosts, setLatestPosts] = useState([]);
-  const formatTime = (time) => {
-    const d = new Date(time);
-    const result = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-    return result;
-  };
   const searchSubmit = (event) => {
     setSearching(true);
     axios({
@@ -87,26 +71,18 @@ function Search() {
       })
       .catch((error) => {});
   };
+
   useEffect(() => {
     document.title = "Tìm kiếm";
-    const requestPosts = axios.get(
-      ApiBaseURL("post/load?page=" + page + "&pageSize=" + pageSize)
-    );
-    const requestTrendingPosts = axios.get(ApiBaseURL("post/loadMostViews"));
-    const requestLatestPosts = axios.get(ApiBaseURL("post/loadLatest"));
-    axios
-      .all([requestPosts, requestTrendingPosts, requestLatestPosts])
-      .then(
-        axios.spread((...responses) => {
-          setTotal(responses[0].data.total);
-          setPosts(responses[0].data.data);
-          setTrendingPosts(responses[1].data.data);
-          setLatestPosts(responses[2].data.data);
-
-          setLoadinggg(false);
-        })
-      )
-      .catch((errors) => {});
+    axios({
+      method: "get",
+      url: ApiBaseURL("post/load?page=" + page + "&pageSize=" + pageSize),
+    })
+      .then((response) => {
+        setPosts(response.data.data);
+        setLoadinggg(false);
+      })
+      .catch((error) => {});
   }, []);
   if (loadinggg) {
     return <div id="preloader"></div>;
@@ -342,7 +318,9 @@ function Search() {
                             </Link>
                           </figure>
                           <div className="item-content">
-                            <span className="sub-title text-uppercase">{value.category}</span>
+                            <span className="sub-title text-uppercase">
+                              {value.category}
+                            </span>
                             <h3 className="item-title">
                               <Link to={"/" + value.nameUrl}>
                                 {value.title}
@@ -353,7 +331,7 @@ function Search() {
                               <li>
                                 <a href="#!">
                                   <i className="fas fa-clock" />
-                                  {formatTime(value.createdAt)}
+                                  {FormatTime(value.createdAt)}
                                 </a>
                               </li>
                             </ul>
@@ -376,46 +354,7 @@ function Search() {
               </div>
               <div className="col-lg-4 sidebar-widget-area sidebar-break-md">
                 <div className="widget">
-                  <div className="section-heading heading-dark">
-                    <h3 className="item-heading">BÀI VIẾT MỚI NHẤT</h3>
-                  </div>
-                  <div className="widget-blog-post">
-                    <ul className="block-list">
-                      {latestPosts.map((value, key) => {
-                        return (
-                          <li className="single-item" key={key}>
-                            <div className="item-img">
-                              <Link to={"/" + value.nameUrl}>
-                                <img
-                                  className="img-side-bar"
-                                  src={value.img}
-                                  alt={value.title}
-                                />
-                              </Link>
-                            </div>
-                            <div className="item-content">
-                              <div className="item-post-date">
-                                <a href="#!" className="text-uppercase">
-                                  {value.category}
-                                </a>
-                              </div>
-                              <h4 className="item-title">
-                                <Link to={"/" + value.nameUrl}>
-                                  {value.title}
-                                </Link>
-                              </h4>
-                              <div className="item-post-by">
-                                <a href="#!">
-                                  <i className="fas fa-clock" />
-                                  {formatTime(value.createdAt)}
-                                </a>
-                              </div>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                  <LatestPosts />
                 </div>
                 <div className="widget">
                   <div className="section-heading heading-dark">
@@ -474,35 +413,7 @@ function Search() {
                   </div>
                 </div>
                 <div className="widget">
-                  <div className="section-heading heading-dark">
-                    <h3 className="item-heading">BÀI VIẾT NỔI BẬT</h3>
-                  </div>
-                  <div className="widget-featured-feed">
-                    <Slider {...settings}>
-                      {trendingPosts.map((value, key) => {
-                        return (
-                          <div className="featured-box-layout1" key={key}>
-                            <div className="item-img">
-                              <img
-                                src={value.img}
-                                alt={value.title}
-                                className="img-fluid"
-                              />
-                            </div>
-                            <div className="item-content">
-                              <span className="ctg-name text-uppercase"></span>
-                              <h4 className="item-title">
-                                <Link to={"/" + value.nameUrl}>
-                                  {value.title}
-                                </Link>
-                              </h4>
-                              <p>{value.summary}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </Slider>
-                  </div>
+                  <FeaturedPosts />
                 </div>
                 <div className="widget">
                   <div className="widget-newsletter-subscribe">
@@ -644,40 +555,7 @@ function Search() {
                   </div>
                 </div>
                 <div className="widget">
-                  <div className="section-heading heading-dark">
-                    <h3 className="item-heading">TAG PHỔ BIẾN</h3>
-                  </div>
-                  <div className="widget-tag">
-                    <ul>
-                      <li>
-                        <a href="#!">DESERT</a>
-                      </li>
-                      <li>
-                        <a href="#!">CAKE</a>
-                      </li>
-                      <li>
-                        <a href="#!">BREAKFAST</a>
-                      </li>
-                      <li>
-                        <a href="#!">BURGER</a>
-                      </li>
-                      <li>
-                        <a href="#!">DINNER</a>
-                      </li>
-                      <li>
-                        <a href="#!">PIZZA</a>
-                      </li>
-                      <li>
-                        <a href="#!">SEA FOOD</a>
-                      </li>
-                      <li>
-                        <a href="#!">SALAD</a>
-                      </li>
-                      <li>
-                        <a href="#!">JUICE</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <HotTags />
                 </div>
               </div>
             </div>

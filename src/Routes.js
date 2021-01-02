@@ -9,6 +9,7 @@ import PostDetail from "./pages/PostDetail";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Category from "./pages/Category";
+import Tag from "./pages/Tag";
 import Search from "./pages/Search";
 function Routes() {
   return (
@@ -21,6 +22,9 @@ function Routes() {
         </Route>
         <Route path="/the-loai/:slug">
           <Category />
+        </Route>
+        <Route path="/tag/:slug">
+          <Tag />
         </Route>
         <Route path="/lien-he">
           <Contact />

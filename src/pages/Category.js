@@ -1,42 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
+import { FormatTime } from '../helpers/FormatTime';
 import { Redirect, Link, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
+import LatestPosts from "../components/LatestPosts";
+import Categories from "../components/Categories";
+import FeaturedPosts from "../components/FeaturedPosts";
+import HotTags from "../components/HotTags";
 
 function Category() {
   const [loadinggg, setLoadinggg] = useState(true);
   const [notFound, setNotFound] = useState(false);
   let { slug } = useParams();
-  console.log(slug);
-  let settings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    swipeToSlide: true,
-  };
   const [page, setPage] = useState(1);
   const pageSize = 5;
   const [total, setTotal] = useState(0);
   const [posts, setPosts] = useState([]);
-  const [latestPosts, setLatestPosts] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState();
-  const [trendingPosts, setTrendingPosts] = useState([]);
-  const formatTime = (time) => {
-    const d = new Date(time);
-    const result = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-    return result;
-  };
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
     axios({
@@ -48,24 +31,6 @@ function Category() {
       })
       .catch((error) => {});
   };
-  useEffect(() => {
-    const requestLatestPosts = axios.get(ApiBaseURL("post/loadLatest"));
-    const requestCategories = axios.get(ApiBaseURL("category/load"));
-    const requestTrendingPosts = axios.get(ApiBaseURL("post/loadMostViews"));
-    axios
-      .all([requestLatestPosts, requestCategories, requestTrendingPosts])
-      .then(
-        axios.spread((...responses) => {
-          setLatestPosts(responses[0].data.data);
-          setCategories(responses[1].data.data);
-          console.log(responses[1].data.data);
-          setTrendingPosts(responses[2].data.data);
-
-          setLoadinggg(false);
-        })
-      )
-      .catch((error) => {});
-  }, []);
   useEffect(() => {
     setLoadinggg(true);
     axios({
@@ -88,7 +53,6 @@ function Category() {
         })
           .then((response) => {
             setPosts(response.data.data);
-            console.log(response.data.data);
             setTotal(response.data.total);
             setLoadinggg(false);
           })
@@ -107,7 +71,6 @@ function Category() {
   if (loadinggg) {
     return <div id="preloader"></div>;
   } else {
-    console.log();
     return (
       <div>
         <Header />
@@ -148,7 +111,7 @@ function Category() {
                           <li className="mr-5">
                             <a href="#!">
                               <i className="fas fa-clock" />
-                              {formatTime(value.createdAt)}
+                              {FormatTime(value.createdAt)}
                             </a>
                           </li>
                           <li>
@@ -183,46 +146,7 @@ function Category() {
               </div>
               <div className="col-lg-4 sidebar-widget-area sidebar-break-md">
                 <div className="widget">
-                  <div className="section-heading heading-dark">
-                    <h3 className="item-heading">BÀI VIẾT MỚI NHẤT</h3>
-                  </div>
-                  <div className="widget-blog-post">
-                    <ul className="block-list">
-                      {latestPosts.map((value, key) => {
-                        return (
-                          <li className="single-item" key={key}>
-                            <div className="item-img">
-                              <Link to={"/" + value.nameUrl}>
-                                <img
-                                  className="img-side-bar"
-                                  src={value.img}
-                                  alt={value.title}
-                                />
-                              </Link>
-                            </div>
-                            <div className="item-content">
-                              <div className="item-post-date">
-                                <a href="#!" className="text-uppercase">
-                                  {value.category}
-                                </a>
-                              </div>
-                              <h4 className="item-title">
-                                <Link to={"/" + value.nameUrl}>
-                                  {value.title}
-                                </Link>
-                              </h4>
-                              <div className="item-post-by">
-                                <a href="#!">
-                                  <i className="fas fa-clock" />
-                                  {formatTime(value.createdAt)}
-                                </a>
-                              </div>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                  <LatestPosts/>
                 </div>
                 <div className="widget">
                   <div className="section-heading heading-dark">
@@ -270,23 +194,7 @@ function Category() {
                   </div>
                 </div>
                 <div className="widget">
-                  <div className="section-heading heading-dark">
-                    <h3 className="item-heading">THỂ LOẠI</h3>
-                  </div>
-                  <div className="widget-categories">
-                    <ul>
-                      {categories.map((value, key) => {
-                        return (
-                          <li key={key}>
-                            <Link to={"/the-loai/" + value.nameUrl}>
-                              {value.name}
-                              <span>25</span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                  <Categories/>
                 </div>
                 <div className="widget">
                   <div className="widget-newsletter-subscribe">
@@ -313,71 +221,10 @@ function Category() {
                   </div>
                 </div>
                 <div className="widget">
-                  <div className="section-heading heading-dark">
-                    <h3 className="item-heading">BÀI VIẾT NỔI BẬT</h3>
-                  </div>
-                  <div className="widget-featured-feed">
-                    <Slider {...settings}>
-                      {trendingPosts.map((value, key) => {
-                        return (
-                          <div className="featured-box-layout1" key={key}>
-                            <div className="item-img">
-                              <img
-                                src={value.img}
-                                alt={value.title}
-                                className="img-fluid"
-                              />
-                            </div>
-                            <div className="item-content">
-                              <span className="ctg-name text-uppercase"></span>
-                              <h4 className="item-title">
-                                <Link to={"/" + value.nameUrl}>
-                                  {value.title}
-                                </Link>
-                              </h4>
-                              <p>{value.summary}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </Slider>
-                  </div>
+                  <FeaturedPosts/>
                 </div>
                 <div className="widget">
-                  <div className="section-heading heading-dark">
-                    <h3 className="item-heading">POPULAR TAGS</h3>
-                  </div>
-                  <div className="widget-tag">
-                    <ul>
-                      <li>
-                        <a href="#!">DESERT</a>
-                      </li>
-                      <li>
-                        <a href="#!">CAKE</a>
-                      </li>
-                      <li>
-                        <a href="#!">BREAKFAST</a>
-                      </li>
-                      <li>
-                        <a href="#!">BURGER</a>
-                      </li>
-                      <li>
-                        <a href="#!">DINNER</a>
-                      </li>
-                      <li>
-                        <a href="#!">PIZZA</a>
-                      </li>
-                      <li>
-                        <a href="#!">SEA FOOD</a>
-                      </li>
-                      <li>
-                        <a href="#!">SALAD</a>
-                      </li>
-                      <li>
-                        <a href="#!">JUICE</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <HotTags/>
                 </div>
               </div>
             </div>
