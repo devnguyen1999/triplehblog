@@ -157,7 +157,9 @@ function PostDetail() {
                           {tags.map((value, key) => {
                             return (
                               <li key={key}>
-                                <a href="#!">{value}</a>
+                                <Link to={"/tag/" + encodeURIComponent(value)}>
+                                  {value}
+                                </Link>
                               </li>
                             );
                           })}
@@ -332,7 +334,7 @@ function PostDetail() {
                 <div className="widget">
                   <Categories />
                 </div>
-                <div className="widget">
+                {/* <div className="widget">
                   <div className="widget-newsletter-subscribe">
                     <h3>NHẬN CẬP NHẬT MỚI NHẤT</h3>
                     <p>Đăng ký bản tin</p>
@@ -354,7 +356,7 @@ function PostDetail() {
                       </div>
                     </form>
                   </div>
-                </div>
+                </div> */}
                 <div className="widget">
                   <FeaturedPosts />
                 </div>

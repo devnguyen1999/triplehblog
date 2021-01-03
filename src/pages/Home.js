@@ -13,6 +13,7 @@ import LatestPosts from '../components/LatestPosts';
 import Categories from '../components/Categories';
 import HotTags from '../components/HotTags';
 import Advert from '../components/Advert';
+import AboutUs from '../components/AboutUs';
 
 function Home() {
   const [loadinggg, setLoadinggg] = useState(true);
@@ -244,18 +245,7 @@ function Home() {
               </div>
               <div className='col-lg-4 sidebar-widget-area sidebar-break-md'>
                 <div className='widget'>
-                  <div className='section-heading heading-dark'>
-                    <h3 className='item-heading'>VỀ CHÚNG TÔI</h3>
-                  </div>
-                  <div className='widget-about'>
-                    <figure className='author-figure'>
-                      <img src='../assets/img/figure/about.jpg' alt='about' />
-                    </figure>
-                    <figure className='author-signature'>
-                      <h3>Three Heroes</h3>
-                    </figure>
-                    <p>From UIT with love.</p>
-                  </div>
+                  <AboutUs/>
                 </div>
                 <div className='widget'>
                   <div className='section-heading heading-dark'>
@@ -308,7 +298,7 @@ function Home() {
                 <div className='widget'>
                   <Categories/>
                 </div>
-                <div className='widget'>
+                {/* <div className='widget'>
                   <div className='widget-newsletter-subscribe'>
                     <h3>NHẬN CẬP NHẬT MỚI NHẤT</h3>
                     <p>Đăng ký bản tin</p>
@@ -331,7 +321,7 @@ function Home() {
                       </div>
                     </form>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

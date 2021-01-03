@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
+import { Link } from "react-router-dom";
 const HotTags = () => {
   const [hotTags, setHotTags] = useState([]);
   useEffect(() => {
@@ -26,7 +27,7 @@ const HotTags = () => {
               if (tag !== null && tag !== "undefined" && tag !== undefined)
                 return (
                   <li key={key}>
-                    <a href="#!">{tag}</a>
+                    <Link to={"/tag/" + encodeURIComponent(tag)}>{tag}</Link>
                   </li>
                 );
             })}

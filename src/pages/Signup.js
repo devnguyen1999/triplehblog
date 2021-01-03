@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { ApiBaseURL } from "../ApiBaseURL";
+import AboutUs from "../components/AboutUs";
 
 function Signup() {
   const { handleSubmit, register, errors, watch } = useForm();
@@ -77,11 +78,11 @@ function Signup() {
         <div className="container">
           <div className="row gutters-60">
             <div className="col-lg-8">
-              <div className="Signup-box-layout1">
+              <div className="login-box-layout1">
                 <div className="section-heading heading-dark">
                   <h2 className="item-heading">FORM ĐĂNG KÝ</h2>
                 </div>
-                <form className="Signup-form" onSubmit={handleSubmit(onSubmit)}>
+                <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="row">
                     <div className="col-md-12">
                       <label className="mb-3">Tên của bạn</label>
@@ -197,21 +198,7 @@ function Signup() {
             </div>
             <div className="col-lg-4 sidebar-widget-area sidebar-break-md">
               <div className="widget">
-                <div className="section-heading heading-dark">
-                  <h3 className="item-heading">VỀ CHÚNG TÔI</h3>
-                </div>
-                <div className="widget-about">
-                  <figure className="author-figure">
-                    <img src="../assets/img/figure/about.jpg" alt="about" />
-                  </figure>
-                  <figure className="author-signature">
-                    <img src="../assets/img/figure/signature.png" alt="about" />
-                  </figure>
-                  <p>
-                    Fusce mauris auctor ollicituder teary iner hendrerit risusey
-                    aeenean rauctor pibus doloer.
-                  </p>
-                </div>
+                <AboutUs/>
               </div>
             </div>
           </div>

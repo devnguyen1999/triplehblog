@@ -79,6 +79,7 @@ function Search() {
       url: ApiBaseURL("post/load?page=" + page + "&pageSize=" + pageSize),
     })
       .then((response) => {
+        setTotal(response.data.total);
         setPosts(response.data.data);
         setLoadinggg(false);
       })

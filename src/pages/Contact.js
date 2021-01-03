@@ -66,7 +66,7 @@ function Contact() {
                 </li>
               </ul>
             </div>
-            <div className="section-heading heading-dark">
+            {/* <div className="section-heading heading-dark">
               <h3 className="item-heading-big">Gửi phản hồi cho chúng tôi</h3>
             </div>
             <form id="contact-form" className="contact-form-box">
@@ -116,7 +116,7 @@ function Contact() {
                 </div>
                 <div className="form-response" />
               </div>
-            </form>
+            </form> */}
           </div>
         </div>
         <div className="contact-box-right">

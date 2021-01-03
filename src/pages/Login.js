@@ -6,6 +6,7 @@ import axios from "axios";
 import { setUserSession } from "../helpers/HandleUser";
 import { useForm } from "react-hook-form";
 import { ApiBaseURL } from "../ApiBaseURL";
+import AboutUs from "../components/AboutUs";
 
 function Login(props) {
   const { handleSubmit, register, errors } = useForm();
@@ -177,21 +178,7 @@ function Login(props) {
             </div>
             <div className="col-lg-4 sidebar-widget-area sidebar-break-md">
               <div className="widget">
-                <div className="section-heading heading-dark">
-                  <h3 className="item-heading">VỀ CHÚNG TÔI</h3>
-                </div>
-                <div className="widget-about">
-                  <figure className="author-figure">
-                    <img src="../assets/img/figure/about.jpg" alt="about" />
-                  </figure>
-                  <figure className="author-signature">
-                    <img src="../assets/img/figure/signature.png" alt="about" />
-                  </figure>
-                  <p>
-                    Fusce mauris auctor ollicituder teary iner hendrerit risusey
-                    aeenean rauctor pibus doloer.
-                  </p>
-                </div>
+                <AboutUs/>
               </div>
             </div>
           </div>

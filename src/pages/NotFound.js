@@ -28,10 +28,9 @@ function NotFound() {
                     />
                   </div>
                 </div>
-                <h2 className="item-title">Sorry! Page Was Not Found</h2>
+                <h2 className="item-title">Trang này không tồn tại</h2>
                 <p className="item-details">
-                  The page you are looking is not available or has been removed.
-                  Try going to Home Page by using the button below.
+                  Trang bạn đang truy cập hiện không tìm thấy.
                 </p>
                 <Link to="/" className="item-btn">
                   ĐI ĐẾN TRANG CHỦ

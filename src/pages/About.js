@@ -5,10 +5,12 @@ import Footer from "../components/Footer";
 import LatestPosts from "../components/LatestPosts";
 
 function About() {
-  useEffect(() => {document.title = "Về chúng tôi";}, []);
+  useEffect(() => {
+    document.title = "Về chúng tôi";
+  }, []);
   return (
     <div>
-        <Header/>
+      <Header />
       {/* Inne Page Banner Area Start Here */}
       <section
         className="inner-page-banner bg-common"
@@ -41,19 +43,18 @@ function About() {
                   <img src="../assets/img/figure/about2.jpg" alt="About" />
                 </div>
                 <h2 className="about-title title-bar bar-center">
-                  Rosario Kareon
+                  Three Heroes
                 </h2>
                 <p className="item-description">
-                  More off this less hello salamander lied porpoise much over
-                  tightly circa horse taped so innocuously side crudey mightily
-                  rigorous plot life. New homes in particular are subject.All
-                  recipes created with FoodiePress have suport for Micoformats
-                  and Google Recipe View. Schema.org is a collaboration byo
-                  improve the web by creatinegaera structured data markupore off
-                  this less hello salamander lied porpoise much over
-                  tightlyapedey innocuouslylife.
+                  Chúng tôi là những sinh viên thuộc lớp MMTT2017, khoa Mạng máy
+                  tính &#38; Truyền thông
+                  <p>
+                    Trường Đại học Công nghệ Thông tin - Đại học Quốc gia Thành
+                    phố Hồ Chí Minh
+                  </p>
+                  <p>From UIT with love.</p>
                 </p>
-                <div className="section-heading heading-dark">
+                {/* <div className="section-heading heading-dark">
                   <h2 className="item-heading">GỬI PHẢN HỒI CHO CHÚNG TÔI</h2>
                 </div>
                 <form className="about-contact-form">
@@ -99,7 +100,7 @@ function About() {
                     </div>
                     <div className="form-response" />
                   </div>
-                </form>
+                </form> */}
               </div>
             </div>
             <div className="col-lg-4 sidebar-widget-area sidebar-break-md">
@@ -149,7 +150,7 @@ function About() {
                 </div>
               </div>
               <div className="widget">
-                <LatestPosts/>
+                <LatestPosts />
               </div>
               <div className="widget">
                 <div className="widget-ad">
@@ -167,7 +168,7 @@ function About() {
         </div>
       </section>
       {/* Recipe With Sidebar Area End Here */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
