@@ -90,7 +90,8 @@ function PostDetail() {
   if (loadinggg) {
     return <div id='preloader'></div>;
   } else {
-    const URL = window.location.pathname;
+    const URL = window.location.href;
+    console.log(URL);
     return (
       <div>
         <Header />
@@ -167,22 +168,20 @@ function PostDetail() {
                       <li>
                         <ul className='inner-share'>
                           <li>
-                            <a href='#!'>
-                              <div
-                                class='fb-share-button'
-                                data-href={URL}
-                                data-layout='button_count'
-                                data-size='large'
+                            <div
+                              className='fb-share-button'
+                              data-href={URL}
+                              data-layout='button_count'
+                              data-size='large'
+                            >
+                              <a
+                                // eslint-disable-next-line react/jsx-no-target-blank
+                                target='_blank'
+                                href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftriplehblog.vercel.app%2F&amp;src=sdkpreparse'
                               >
-                                <a
-                                  // eslint-disable-next-line react/jsx-no-target-blank
-                                  target='_blank'
-                                  href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftriplehblog.vercel.app%2F&amp;src=sdkpreparse'
-                                >
-                                  <i className='fab fa-facebook-f' />
-                                </a>
-                              </div>
-                            </a>
+                                <i className='fab fa-facebook-f' />
+                              </a>
+                            </div>
                           </li>
                           <li>
                             <a href='#!'>
