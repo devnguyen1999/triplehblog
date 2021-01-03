@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
 import { Link, useLocation } from "react-router-dom";
-import { getUser, getToken, removeUserSession } from "../HandleUser";
+import { getUser, getToken, removeUserSession } from "../helpers/HandleUser";
 
 function Header() {
   let location = useLocation();

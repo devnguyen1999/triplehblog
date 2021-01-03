@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
-import { setUserSession } from "../HandleUser";
+import { setUserSession } from "../helpers/HandleUser";
 import { useForm } from "react-hook-form";
 import { ApiBaseURL } from "../ApiBaseURL";
 

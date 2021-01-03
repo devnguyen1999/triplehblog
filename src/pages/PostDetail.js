@@ -5,7 +5,7 @@ import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
 import { FormatTime } from "../helpers/FormatTime";
 import { Redirect, Link, useParams } from "react-router-dom";
-import { getToken, getUser } from "../HandleUser";
+import { getToken, getUser } from "../helpers/HandleUser";
 import { useForm } from "react-hook-form";
 import LatestPosts from "../components/LatestPosts";
 import Categories from "../components/Categories";

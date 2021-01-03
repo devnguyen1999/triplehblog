@@ -12,6 +12,7 @@ import FeaturedPosts from '../components/FeaturedPosts';
 import LatestPosts from '../components/LatestPosts';
 import Categories from '../components/Categories';
 import HotTags from '../components/HotTags';
+import Advert from '../components/Advert';
 
 function Home() {
   const [loadinggg, setLoadinggg] = useState(true);
@@ -238,6 +239,7 @@ function Home() {
                       );
                     }
                   })}
+                  <Advert/>
                 </div>
               </div>
               <div className='col-lg-4 sidebar-widget-area sidebar-break-md'>
