@@ -11,7 +11,6 @@ import LatestPosts from "../components/LatestPosts";
 import Categories from "../components/Categories";
 import FeaturedPosts from "../components/FeaturedPosts";
 import HotTags from "../components/HotTags";
-import Helmet from "react-helmet";
 
 function PostDetail() {
   const [loadinggg, setLoadinggg] = useState(true);
@@ -72,7 +71,7 @@ function PostDetail() {
       url: ApiBaseURL("post/load/" + slug),
     })
       .then((response) => {
-        // document.title = response.data.title;
+        document.title = response.data.title;
         setPost(response.data);
         setTags(response.data.tags);
         setComments(response.data.comments);
@@ -96,14 +95,6 @@ function PostDetail() {
     return (
       <div>
         <Header />
-        <Helmet>
-          <title>{post.title}</title>
-          <meta property="og:url" content={slug} />
-          {/* <meta property="og:type" content={props.type} /> */}
-          <meta property="og:title" content={post.title} />
-          <meta property="og:description" content={post.summary} />
-          <meta property="og:image" content={post.img} />
-        </Helmet>
         {/* Inne Page Banner Area Start Here */}
         <section className="inner-page-banner bg-common">
           <div className="container">
