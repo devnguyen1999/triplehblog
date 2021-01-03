@@ -27,13 +27,26 @@ function Header() {
   };
   useEffect(() => {
     getCategories();
+    const script = document.createElement("script");
+
+    script.src = "../assets/js/main.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
   const displayCheck = () => {
     if (loggedIn) {
       var user = getUser();
       return (
         <li>
-          <a href="#!">{user.name}</a>
+          <a href="#!" className="text-white p-0">
+          <i className="flaticon-profile mr-3" />
+            {user.name}
+          </a>
           <ul className="dropdown-menu-col-1">
             <li>
               <Link to="/trang-ca-nhan">Trang cá nhân</Link>
@@ -55,10 +68,16 @@ function Header() {
     } else {
       return (
         <li>
-          <Link to={{
+          <Link
+            to={{
               pathname: "/dang-nhap",
-              params: { from: location }
-            }}>Đăng nhập</Link>
+              params: { from: location },
+            }}
+            className="text-white p-0"
+          >
+            <i className="flaticon-profile mr-3" />
+            Đăng nhập
+          </Link>
         </li>
       );
     }
@@ -70,7 +89,7 @@ function Header() {
         <div id="header-main-menu" className="header-main-menu header-sticky">
           <div className="container">
             <div className="row">
-              <div className="col-lg-8 col-md-3 col-sm-4 col-4 possition-static">
+              <div className="col-lg-8 col-md-4 col-sm-5 col-5 possition-static">
                 <div className="site-logo-mobile">
                   <Link to="/" className="sticky-logo-light">
                     <img src="../assets/img/logo-light.png" alt="Site Logo" />
@@ -90,9 +109,7 @@ function Header() {
                         {categories.map((value, key) => {
                           return (
                             <li key={key}>
-                              <Link
-                                to={"/the-loai/" + value.nameUrl}
-                              >
+                              <Link to={"/the-loai/" + value.nameUrl}>
                                 {value.name}
                               </Link>
                             </li>
@@ -109,12 +126,34 @@ function Header() {
                   </ul>
                 </nav>
               </div>
-              <div className="col-lg-4 col-md-9 col-sm-8 col-8 d-flex align-items-center justify-content-end">
+              {/* <div className="col-lg-4 col-md-8 col-sm-7 col-7 d-flex align-items-center justify-content-end">
                 <nav className="site-nav">
                   <ul id="site-menu" className="site-menu">
                     {displayCheck()}
                   </ul>
                 </nav>
+                <div className="mob-menu-open toggle-menu">
+                  <span className="bar" />
+                  <span className="bar" />
+                  <span className="bar" />
+                  <span className="bar" />
+                </div>
+              </div> */}
+              <div className="col-lg-4 col-md-8 col-sm-7 col-7 d-flex align-items-center justify-content-end">
+                <div className="nav-action-elements-layout1">
+                  <ul>
+                    {/* <li>
+                      <button
+                        type="button"
+                        className="login-btn"
+                      >
+                        
+                        Login
+                      </button>
+                    </li> */}
+                    {displayCheck()}
+                  </ul>
+                </div>
                 <div className="mob-menu-open toggle-menu">
                   <span className="bar" />
                   <span className="bar" />
