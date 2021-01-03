@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import HotTags from '../components/HotTags';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import { ApiBaseURL } from '../ApiBaseURL';
+import { FormatTime } from '../helpers/FormatTime';
 import { Link } from 'react-router-dom';
+import FeaturedPosts from '../components/FeaturedPosts';
+import LatestPosts from '../components/LatestPosts';
+import Categories from '../components/Categories';
+import HotTags from '../components/HotTags';
+import Advert from '../components/Advert';
 
 function Home() {
   const [loadinggg, setLoadinggg] = useState(true);
@@ -32,22 +37,14 @@ function Home() {
   const [slider, setSlider] = useState([]);
   const [randomPosts, setRandomPosts] = useState([]);
   const [trendingPosts, setTrendingPosts] = useState([]);
-  const [latestPosts, setLatestPosts] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [choicedPosts, setChoicedPosts] = useState([]);
   const [popularPosts, setPopularPosts] = useState([]);
-  const formatTime = (time) => {
-    const d = new Date(time);
-    const result = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-    return result;
-  };
+  
   useEffect(() => {
     document.title = 'Triple H Blog';
     const requestSlider = axios.get(ApiBaseURL('post/load?page=1&pageSize=3'));
     const requestRandomPosts = axios.get(ApiBaseURL('post/loadRandom'));
     const requestTrendingPosts = axios.get(ApiBaseURL('post/loadMostViews'));
-    const requestLatestPosts = axios.get(ApiBaseURL('post/loadLatest'));
-    const requestCategories = axios.get(ApiBaseURL('category/load'));
     const requestChoicedPosts = axios.get(ApiBaseURL('post/loadRandom'));
     const requestPopularPosts = axios.get(ApiBaseURL('post/loadMostViews'));
     axios
@@ -55,20 +52,16 @@ function Home() {
         requestSlider, //0
         requestRandomPosts, //1
         requestTrendingPosts, //2
-        requestLatestPosts, //3
-        requestCategories, //4
-        requestChoicedPosts, //5
-        requestPopularPosts, //6
+        requestChoicedPosts, //3
+        requestPopularPosts, //4
       ])
       .then(
         axios.spread((...responses) => {
           setSlider(responses[0].data.data);
           setRandomPosts(responses[1].data.data);
           setTrendingPosts(responses[2].data.data);
-          setLatestPosts(responses[3].data.data);
-          setCategories(responses[4].data.data);
-          setChoicedPosts(responses[5].data.data);
-          setPopularPosts(responses[6].data.data);
+          setChoicedPosts(responses[3].data.data);
+          setPopularPosts(responses[4].data.data);
           setLoadinggg(false);
         })
       )
@@ -106,7 +99,7 @@ function Home() {
                         <li>
                           <a href='#!'>
                             <i className='fas fa-clock' />
-                            {formatTime(value.createdAt)}
+                            {FormatTime(value.createdAt)}
                           </a>
                         </li>
                       </ul>
@@ -154,7 +147,7 @@ function Home() {
                           <li>
                             <a href='#!'>
                               <i className='fas fa-clock' />
-                              {formatTime(value.createdAt)}
+                              {FormatTime(value.createdAt)}
                             </a>
                           </li>
                         </ul>
@@ -201,7 +194,7 @@ function Home() {
                           <li>
                             <a href='#!'>
                               <i className='fas fa-clock' />
-                              {formatTime(trendingPosts[0].createdAt)}
+                              {FormatTime(trendingPosts[0].createdAt)}
                             </a>
                           </li>
                         </ul>
@@ -236,7 +229,7 @@ function Home() {
                                 <li>
                                   <a href='#!'>
                                     <i className='fas fa-clock' />
-                                    {formatTime(value.createdAt)}
+                                    {FormatTime(value.createdAt)}
                                   </a>
                                 </li>
                               </ul>
@@ -246,6 +239,7 @@ function Home() {
                       );
                     }
                   })}
+                  <Advert/>
                 </div>
               </div>
               <div className='col-lg-4 sidebar-widget-area sidebar-break-md'>
@@ -309,65 +303,10 @@ function Home() {
                   </div>
                 </div>
                 <div className='widget'>
-                  <div className='section-heading heading-dark'>
-                    <h3 className='item-heading'>BÀI VIẾT MỚI NHẤT</h3>
-                  </div>
-                  <div className='widget-blog-post'>
-                    <ul className='block-list'>
-                      {latestPosts.map((value, key) => {
-                        return (
-                          <li className='single-item' key={key}>
-                            <div className='item-img'>
-                              <Link to={'/' + value.nameUrl}>
-                                <img
-                                  className='img-side-bar'
-                                  src={value.img}
-                                  alt={value.title}
-                                />
-                              </Link>
-                            </div>
-                            <div className='item-content'>
-                              <div className='item-post-date'>
-                                <a href='#!' className='text-uppercase'>
-                                  {value.category}
-                                </a>
-                              </div>
-                              <h4 className='item-title'>
-                                <Link to={'/' + value.nameUrl}>
-                                  {value.title}
-                                </Link>
-                              </h4>
-                              <div className='item-post-by'>
-                                <a href='#!'>
-                                  <i className='fas fa-clock' />
-                                  {formatTime(value.createdAt)}
-                                </a>
-                              </div>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                  <LatestPosts/>
                 </div>
                 <div className='widget'>
-                  <div className='section-heading heading-dark'>
-                    <h3 className='item-heading'>THỂ LOẠI</h3>
-                  </div>
-                  <div className='widget-categories'>
-                    <ul>
-                      {categories.map((value, key) => {
-                        return (
-                          <li key={key}>
-                            <Link to={'/the-loai/' + value.nameUrl}>
-                              {value.name}
-                              <span>25</span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                  <Categories/>
                 </div>
                 <div className='widget'>
                   <div className='widget-newsletter-subscribe'>
@@ -432,7 +371,7 @@ function Home() {
                           <li>
                             <a href='#!'>
                               <i className='fas fa-clock' />
-                              {formatTime(value.createdAt)}
+                              {FormatTime(value.createdAt)}
                             </a>
                           </li>
                         </ul>
@@ -490,7 +429,7 @@ function Home() {
                                 <li>
                                   <a href='#!'>
                                     <i className='fas fa-clock' />
-                                    {formatTime(value.createdAt)}
+                                    {FormatTime(value.createdAt)}
                                   </a>
                                 </li>
                               </ul>
@@ -504,35 +443,7 @@ function Home() {
               </div>
               <div className='col-lg-4 sidebar-widget-area sidebar-break-md'>
                 <div className='widget'>
-                  <div className='section-heading heading-dark'>
-                    <h3 className='item-heading'>BÀI VIẾT NỔI BẬT</h3>
-                  </div>
-                  <div className='widget-featured-feed'>
-                    <Slider {...settings}>
-                      {trendingPosts.map((value, key) => {
-                        return (
-                          <div className='featured-box-layout1' key={key}>
-                            <div className='item-img'>
-                              <img
-                                src={value.img}
-                                alt={value.title}
-                                className='img-fluid'
-                              />
-                            </div>
-                            <div className='item-content'>
-                              <span className='ctg-name text-uppercase'></span>
-                              <h4 className='item-title'>
-                                <Link to={'/' + value.nameUrl}>
-                                  {value.title}
-                                </Link>
-                              </h4>
-                              <p>{value.summary}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </Slider>
-                  </div>
+                  <FeaturedPosts/>
                 </div>
                 <div className='widget'>
                   <HotTags />

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LatestPosts from "../components/LatestPosts";
 
 function About() {
   useEffect(() => {document.title = "Về chúng tôi";}, []);
@@ -148,101 +149,7 @@ function About() {
                 </div>
               </div>
               <div className="widget">
-                <div className="section-heading heading-dark">
-                  <h3 className="item-heading">LATEST RECIPES</h3>
-                </div>
-                <div className="widget-latest">
-                  <ul className="block-list">
-                    <li className="single-item">
-                      <div className="item-img">
-                        <a href="#!">
-                          <img src="../assets/img/product/latest1.jpg" alt="Post" />
-                        </a>
-                        <div className="count-number">1</div>
-                      </div>
-                      <div className="item-content">
-                        <div className="item-ctg">DESERT</div>
-                        <h4 className="item-title">
-                          <a href="#!">
-                            Salami Oven Roasted are Mozzarella Oelette
-                          </a>
-                        </h4>
-                        <div className="item-post-by">
-                          <a href="single-blog.html">
-                            <i className="fas fa-user" />
-                            <span>by</span> John Martin
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="single-item">
-                      <div className="item-img">
-                        <a href="#!">
-                          <img src="../assets/img/product/latest2.jpg" alt="Post" />
-                        </a>
-                        <div className="count-number">2</div>
-                      </div>
-                      <div className="item-content">
-                        <div className="item-ctg">DESERT</div>
-                        <h4 className="item-title">
-                          <a href="#!">
-                            Salami Oven Roasted are Mozzarella Oelette
-                          </a>
-                        </h4>
-                        <div className="item-post-by">
-                          <a href="single-blog.html">
-                            <i className="fas fa-user" />
-                            <span>by</span> John Martin
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="single-item">
-                      <div className="item-img">
-                        <a href="#!">
-                          <img src="../assets/img/product/latest3.jpg" alt="Post" />
-                        </a>
-                        <div className="count-number">3</div>
-                      </div>
-                      <div className="item-content">
-                        <div className="item-ctg">DESERT</div>
-                        <h4 className="item-title">
-                          <a href="#!">
-                            Salami Oven Roasted are Mozzarella Oelette
-                          </a>
-                        </h4>
-                        <div className="item-post-by">
-                          <a href="single-blog.html">
-                            <i className="fas fa-user" />
-                            <span>by</span> John Martin
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="single-item">
-                      <div className="item-img">
-                        <a href="#!">
-                          <img src="../assets/img/product/latest4.jpg" alt="Post" />
-                        </a>
-                        <div className="count-number">4</div>
-                      </div>
-                      <div className="item-content">
-                        <div className="item-ctg">DESERT</div>
-                        <h4 className="item-title">
-                          <a href="#!">
-                            Salami Oven Roasted are Mozzarella Oelette
-                          </a>
-                        </h4>
-                        <div className="item-post-by">
-                          <a href="single-blog.html">
-                            <i className="fas fa-user" />
-                            <span>by</span> John Martin
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                <LatestPosts/>
               </div>
               <div className="widget">
                 <div className="widget-ad">

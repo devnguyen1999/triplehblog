@@ -25,7 +25,7 @@
 /*=======================================================================
 1. Typography 
 =========================================================================*/
-@import url('https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700|Lora:400,700');
+@import url("https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700|Lora:400,700");
 
 html {
   height: 100%;
@@ -195,10 +195,10 @@ ul {
   padding: 0;
 }
 
-[class^='flaticon-']:before,
-[class*=' flaticon-']:before,
-[class^='flaticon-']:after,
-[class*=' flaticon-']:after {
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
   margin-left: 0;
 }
 
@@ -328,7 +328,8 @@ ul {
 }
 
 #preloader {
-  background: #ffffff url('./assets/img/preloader.gif') no-repeat scroll center center;
+  background: #ffffff url("./assets/img/preloader.gif") no-repeat scroll center
+    center;
   height: 100%;
   left: 0;
   overflow: visible;
@@ -427,7 +428,7 @@ ul {
   z-index: 99999;
 
   &:before {
-    content: '';
+    content: "";
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -602,7 +603,7 @@ ul {
               margin-bottom: 0;
 
               &:before {
-                content: '';
+                content: "";
                 display: inline-block;
                 position: absolute;
                 width: 17px;
@@ -633,7 +634,7 @@ ul {
               }
             }
 
-            input[type='checkbox'] {
+            input[type="checkbox"] {
               display: none;
 
               &:focus + label::before {
@@ -643,8 +644,8 @@ ul {
               }
 
               &:checked + label::after {
-                font-family: 'Font Awesome 5';
-                content: '\2713';
+                font-family: "Font Awesome 5";
+                content: "\2713";
               }
 
               &:disabled + label {
@@ -662,7 +663,7 @@ ul {
             }
           }
 
-          .checkbox-primary input[type='checkbox']:checked + label {
+          .checkbox-primary input[type="checkbox"]:checked + label {
             &::before {
               background-color: #ff4a52;
               border-color: #ff4a52;
@@ -982,8 +983,8 @@ ul {
   margin-left: 0;
 
   > {
-    [class^='col-'],
-    [class*=' col-'] {
+    [class^="col-"],
+    [class*=" col-"] {
       padding-right: 0;
       padding-left: 0;
     }
@@ -1002,7 +1003,7 @@ ul {
     padding-left: 14.5px;
     padding-right: 14.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 0.5px;
       padding-right: 0.5px;
     }
@@ -1012,7 +1013,7 @@ ul {
     padding-left: 14px;
     padding-right: 14px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 1px;
       padding-right: 1px;
     }
@@ -1022,7 +1023,7 @@ ul {
     padding-left: 13.5px;
     padding-right: 13.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 1.5px;
       padding-right: 1.5px;
     }
@@ -1032,7 +1033,7 @@ ul {
     padding-left: 13px;
     padding-right: 13px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 2px;
       padding-right: 2px;
     }
@@ -1042,7 +1043,7 @@ ul {
     padding-left: 12.5px;
     padding-right: 12.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 2.5px;
       padding-right: 2.5px;
     }
@@ -1052,7 +1053,7 @@ ul {
     padding-left: 12px;
     padding-right: 12px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 3px;
       padding-right: 3px;
     }
@@ -1062,7 +1063,7 @@ ul {
     padding-left: 11.5px;
     padding-right: 11.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 3.5px;
       padding-right: 3.5px;
     }
@@ -1072,7 +1073,7 @@ ul {
     padding-left: 11px;
     padding-right: 11px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 4px;
       padding-right: 4px;
     }
@@ -1082,7 +1083,7 @@ ul {
     padding-left: 10.5px;
     padding-right: 10.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 4.5px;
       padding-right: 4.5px;
     }
@@ -1092,7 +1093,7 @@ ul {
     padding-left: 10px;
     padding-right: 10px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 5px;
       padding-right: 5px;
     }
@@ -1102,7 +1103,7 @@ ul {
     padding-left: 9.5px;
     padding-right: 9.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 5.5px;
       padding-right: 5.5px;
     }
@@ -1112,7 +1113,7 @@ ul {
     padding-left: 9px;
     padding-right: 9px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 6px;
       padding-right: 6px;
     }
@@ -1122,7 +1123,7 @@ ul {
     padding-left: 8.5px;
     padding-right: 8.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 6.5px;
       padding-right: 6.5px;
     }
@@ -1132,7 +1133,7 @@ ul {
     padding-left: 8px;
     padding-right: 8px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 7px;
       padding-right: 7px;
     }
@@ -1142,7 +1143,7 @@ ul {
     padding-left: 7.5px;
     padding-right: 7.5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 7.5px;
       padding-right: 7.5px;
     }
@@ -1152,7 +1153,7 @@ ul {
     padding-left: 5px;
     padding-right: 5px;
 
-    > [class^='col-'] {
+    > [class^="col-"] {
       padding-left: 10px;
       padding-right: 10px;
     }
@@ -1167,7 +1168,7 @@ ul {
       margin-left: -20px;
       margin-right: -20px;
 
-      > [class^='col-'] {
+      > [class^="col-"] {
         padding-left: 20px;
         padding-right: 20px;
       }
@@ -1179,7 +1180,7 @@ ul {
       margin-left: -25px;
       margin-right: -25px;
 
-      > [class^='col-'] {
+      > [class^="col-"] {
         padding-left: 25px;
         padding-right: 25px;
       }
@@ -1191,7 +1192,7 @@ ul {
       margin-left: -30px;
       margin-right: -30px;
 
-      > [class^='col-'] {
+      > [class^="col-"] {
         padding-left: 30px;
         padding-right: 30px;
       }
@@ -1582,7 +1583,7 @@ ul {
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     bottom: -2px;
     left: 0;
     background-color: #ff4a52;
@@ -1634,7 +1635,7 @@ ul {
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     bottom: -2px;
     left: 0;
     right: 0;
@@ -1677,7 +1678,7 @@ ul {
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     bottom: -2px;
     left: 0;
     right: 0;
@@ -1934,7 +1935,7 @@ ul {
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     height: 100%;
     width: 100%;
     background-color: rgba(255, 74, 82, 0.97);
@@ -1963,8 +1964,8 @@ ul {
       padding-right: 20px;
 
       &:before {
-        content: '\203A';
-        font-family: 'Font Awesome 5';
+        content: "\203A";
+        font-family: "Font Awesome 5";
         font-weight: 600;
         font-size: 30px;
         position: absolute;
@@ -2176,7 +2177,7 @@ ul {
 
       &:before {
         position: absolute;
-        content: '';
+        content: "";
         bottom: -2px;
         left: 0;
         background-color: #ff4a52;
@@ -2207,7 +2208,7 @@ ul {
         color: #444444;
 
         &:before {
-          content: '';
+          content: "";
           display: inline-block;
           position: absolute;
           width: 20px;
@@ -2238,7 +2239,7 @@ ul {
         }
       }
 
-      input[type='checkbox'] {
+      input[type="checkbox"] {
         display: none;
 
         &:focus + label::before {
@@ -2248,8 +2249,8 @@ ul {
         }
 
         &:checked + label::after {
-          font-family: 'Font Awesome 5';
-          content: '\2713';
+          font-family: "Font Awesome 5";
+          content: "\2713";
         }
 
         &:disabled + label {
@@ -2267,7 +2268,7 @@ ul {
       }
     }
 
-    .checkbox-primary input[type='checkbox']:checked + label {
+    .checkbox-primary input[type="checkbox"]:checked + label {
       &::before {
         background-color: #ff4a52;
         border-color: #ff4a52;
@@ -2473,8 +2474,8 @@ ul {
           transition: all 0.2s ease-in-out;
 
           &:after {
-            content: '\27A4';
-            font-family: 'Font Awesome 5';
+            content: "\27A4";
+            font-family: "Font Awesome 5";
             font-weight: 600;
             font-size: 10px;
             position: absolute;
@@ -3047,7 +3048,7 @@ ul {
     right: 0;
     transform: translateY(-50%);
 
-    input[type='search'] {
+    input[type="search"] {
       width: 60%;
       color: #ffffff;
       font-size: 24px;
@@ -4015,7 +4016,7 @@ ul {
 
     &:before {
       position: absolute;
-      content: '';
+      content: "";
       bottom: 0;
       left: 0;
       right: 0;
@@ -4127,7 +4128,7 @@ ul {
       color: #ffffff;
 
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         top: -8px;
         left: 25px;
@@ -4354,7 +4355,7 @@ ul {
       -o-linear-gradient(transparent, #111);
     background-image: linear-gradient(transparent, #111),
       linear-gradient(transparent, #111);
-    content: '';
+    content: "";
     height: 80%;
     bottom: 0;
     left: 0;
@@ -4530,7 +4531,6 @@ ul {
   .item-figure {
     margin-bottom: 0;
     overflow: hidden;
-    width: 70%;
     .img-popular-post {
       width: 100%;
       height: 27.5rem;
@@ -4554,7 +4554,7 @@ ul {
   }
 
   .item-content {
-    width: 50%;
+    width: 40%;
     text-align: left;
     padding: 0;
     margin-left: 30px;
@@ -4587,37 +4587,6 @@ ul {
 
       &:hover a {
         color: #ff4a52;
-      }
-    }
-
-    .item-rating {
-      margin-bottom: 10px;
-
-      li {
-        display: inline-block;
-
-        i {
-          font-size: 14px;
-        }
-
-        span {
-          color: #444444;
-          display: inline-block;
-          margin-left: 8px;
-
-          span {
-            color: #bebebe;
-            margin-left: 0;
-          }
-        }
-
-        &.star-fill > i {
-          color: #ffb300;
-        }
-
-        &.star-empty > i {
-          color: #d9d9d9;
-        }
       }
     }
 
@@ -4675,6 +4644,18 @@ ul {
   }
 }
 
+@media only screen and (max-width: 1920px) {
+  .product-box-layout3 .item-figure{
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .product-box-layout3 .item-figure{
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 1199px) {
   .product-box-layout3 {
     display: block;
@@ -4697,7 +4678,7 @@ ul {
   margin-bottom: 4rem;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -4709,7 +4690,7 @@ ul {
   }
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -4731,7 +4712,7 @@ ul {
     z-index: 2;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -4927,7 +4908,7 @@ ul {
     z-index: 2;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -5125,7 +5106,7 @@ ul {
     z-index: 2;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -5330,7 +5311,7 @@ ul {
   margin-bottom: 4rem;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -5342,7 +5323,7 @@ ul {
   }
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -5390,7 +5371,7 @@ ul {
     transition: all 0.3s ease-in-out;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -5715,7 +5696,7 @@ ul {
     }
 
     &:before {
-      content: 'I';
+      content: "I";
       font-size: 16px;
       top: 0;
       left: 106px;
@@ -6091,7 +6072,7 @@ ul {
           transition: all 0.3s ease-in-out;
 
           &:before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
@@ -6384,7 +6365,7 @@ ul {
           color: #444444;
 
           &:before {
-            content: '';
+            content: "";
             display: inline-block;
             position: absolute;
             width: 20px;
@@ -6416,7 +6397,7 @@ ul {
           }
         }
 
-        input[type='checkbox'] {
+        input[type="checkbox"] {
           display: none;
 
           &:focus + label::before {
@@ -6426,8 +6407,8 @@ ul {
           }
 
           &:checked + label::after {
-            font-family: 'Font Awesome 5';
-            content: '\2713';
+            font-family: "Font Awesome 5";
+            content: "\2713";
           }
 
           &:disabled + label {
@@ -6445,7 +6426,7 @@ ul {
         }
       }
 
-      .checkbox-primary input[type='checkbox']:checked + label {
+      .checkbox-primary input[type="checkbox"]:checked + label {
         &::before {
           background-color: #ff4a52;
           border-color: #ff4a52;
@@ -6537,7 +6518,7 @@ ul {
         &:after {
           position: absolute;
           width: 5px;
-          content: '';
+          content: "";
           height: calc(100% + 40px);
           background-color: #dfdfdf;
           top: 100%;
@@ -7213,7 +7194,7 @@ ul {
   background-repeat: no-repeat;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     height: 100%;
@@ -7367,7 +7348,7 @@ ul {
           transition: all 0.3s ease-in-out;
 
           &:before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
@@ -7661,7 +7642,7 @@ ul {
           color: #444444;
 
           &:before {
-            content: '';
+            content: "";
             display: inline-block;
             position: absolute;
             width: 20px;
@@ -7693,7 +7674,7 @@ ul {
           }
         }
 
-        input[type='checkbox'] {
+        input[type="checkbox"] {
           display: none;
 
           &:focus + label::before {
@@ -7703,8 +7684,8 @@ ul {
           }
 
           &:checked + label::after {
-            font-family: 'Font Awesome 5';
-            content: '\2713';
+            font-family: "Font Awesome 5";
+            content: "\2713";
           }
 
           &:disabled + label {
@@ -7722,7 +7703,7 @@ ul {
         }
       }
 
-      .checkbox-primary input[type='checkbox']:checked + label {
+      .checkbox-primary input[type="checkbox"]:checked + label {
         &::before {
           background-color: #ff4a52;
           border-color: #ff4a52;
@@ -8674,7 +8655,7 @@ ul {
       -o-linear-gradient(transparent, #111);
     background-image: linear-gradient(transparent, #111),
       linear-gradient(transparent, #111);
-    content: '';
+    content: "";
     height: 80%;
     bottom: 0;
     left: 0;
@@ -8739,7 +8720,7 @@ ul {
 
       &:before {
         position: absolute;
-        content: '';
+        content: "";
         height: 2px;
         width: 100%;
         background-color: #ff4a52;
@@ -8871,7 +8852,7 @@ ul {
         margin-bottom: 0;
 
         &:before {
-          content: '';
+          content: "";
           display: inline-block;
           position: absolute;
           width: 17px;
@@ -8902,7 +8883,7 @@ ul {
         }
       }
 
-      input[type='checkbox'] {
+      input[type="checkbox"] {
         display: none;
 
         &:focus + label::before {
@@ -8912,8 +8893,8 @@ ul {
         }
 
         &:checked + label::after {
-          font-family: 'Font Awesome 5';
-          content: '\2713';
+          font-family: "Font Awesome 5";
+          content: "\2713";
           font-weight: 700;
         }
 
@@ -8932,7 +8913,7 @@ ul {
       }
     }
 
-    .checkbox-primary input[type='checkbox']:checked + label {
+    .checkbox-primary input[type="checkbox"]:checked + label {
       &::before {
         background-color: #ff4a52;
         border-color: #ff4a52;
@@ -9506,8 +9487,8 @@ ul {
       background-color: #f6f6f6;
 
       &:before {
-        content: '\f10d';
-        font-family: 'Font Awesome 5';
+        content: "\f10d";
+        font-family: "Font Awesome 5";
         font-weight: 600;
         top: 15px;
         left: 20px;
@@ -9519,8 +9500,8 @@ ul {
         position: relative;
 
         &:after {
-          content: '\f10e';
-          font-family: 'Font Awesome 5';
+          content: "\f10e";
+          font-family: "Font Awesome 5";
           font-weight: 600;
           bottom: -10px;
           right: -30px;
@@ -10617,7 +10598,7 @@ ul {
     color: #ffffff;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: -8px;
       left: 25px;
@@ -10819,7 +10800,7 @@ ul {
 
       &:after {
         position: absolute;
-        content: '';
+        content: "";
         bottom: 0;
         left: 0;
         background-color: #ff4a52;
@@ -11512,7 +11493,7 @@ ul {
       z-index: 3;
 
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         height: 100%;
         width: 100%;
@@ -11668,7 +11649,7 @@ ul {
     position: relative;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -11797,7 +11778,7 @@ footer {
 
     &:after {
       position: absolute;
-      content: '.';
+      content: ".";
       right: -7.5px;
       bottom: 0;
     }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
 import { Link, useLocation } from "react-router-dom";
-import { getUser, getToken, removeUserSession } from "../HandleUser";
+import { getUser, getToken, removeUserSession } from "../helpers/HandleUser";
 
 function Header() {
   let location = useLocation();
@@ -72,12 +72,12 @@ function Header() {
             <div className="row">
               <div className="col-lg-8 col-md-3 col-sm-4 col-4 possition-static">
                 <div className="site-logo-mobile">
-                  <a href="index.html" className="sticky-logo-light">
+                  <Link to="/" className="sticky-logo-light">
                     <img src="../assets/img/logo-light.png" alt="Site Logo" />
-                  </a>
-                  <a href="index.html" className="sticky-logo-dark">
+                  </Link>
+                  <Link to="/" className="sticky-logo-dark">
                     <img src="../assets/img/logo-dark.png" alt="Site Logo" />
-                  </a>
+                  </Link>
                 </div>
                 <nav className="site-nav">
                   <ul id="site-menu" className="site-menu">
@@ -171,9 +171,9 @@ function Header() {
               </div>
               <div className="col-lg-4 d-none d-lg-block">
                 <div className="site-logo-desktop">
-                  <a href="index.html" className="main-logo">
+                  <Link to="/" className="main-logo">
                     <img src="../assets/img/logo-dark.png" alt="Site Logo" />
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-lg-4">
