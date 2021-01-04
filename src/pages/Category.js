@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { ApiBaseURL } from "../ApiBaseURL";
-import { FormatTime } from '../helpers/FormatTime';
+import { FormatTime } from "../helpers/FormatTime";
 import { Redirect, Link, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import LatestPosts from "../components/LatestPosts";
@@ -24,7 +24,14 @@ function Category() {
     setPage(pageNumber);
     axios({
       method: "get",
-      url: ApiBaseURL("post/loadByCategory?page=" + pageNumber + "&pageSize=" + pageSize),
+      url: ApiBaseURL(
+        "post/loadByCategory?page=" +
+          pageNumber +
+          "&pageSize=" +
+          pageSize +
+          "&category=" +
+          category.name
+      ),
     })
       .then((response) => {
         setPosts(response.data.data);
@@ -146,7 +153,7 @@ function Category() {
               </div>
               <div className="col-lg-4 sidebar-widget-area sidebar-break-md">
                 <div className="widget">
-                  <LatestPosts/>
+                  <LatestPosts />
                 </div>
                 <div className="widget">
                   <div className="section-heading heading-dark">
@@ -194,7 +201,7 @@ function Category() {
                   </div>
                 </div>
                 <div className="widget">
-                  <Categories/>
+                  <Categories />
                 </div>
                 {/* <div className="widget">
                   <div className="widget-newsletter-subscribe">
@@ -221,10 +228,10 @@ function Category() {
                   </div>
                 </div> */}
                 <div className="widget">
-                  <FeaturedPosts/>
+                  <FeaturedPosts />
                 </div>
                 <div className="widget">
-                  <HotTags/>
+                  <HotTags />
                 </div>
               </div>
             </div>

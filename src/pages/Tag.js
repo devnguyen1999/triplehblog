@@ -25,7 +25,7 @@ function Tag() {
     axios({
       method: "get",
       url: ApiBaseURL(
-        "post/loadByTag?page=" + pageNumber + "&pageSize=" + pageSize
+        "post/loadByTag?page=" + pageNumber + "&pageSize=" + pageSize + "&tag=" + slug
       ),
     })
       .then((response) => {
