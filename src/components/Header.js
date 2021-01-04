@@ -27,16 +27,16 @@ function Header() {
   };
   useEffect(() => {
     getCategories();
-    // const script = document.createElement("script");
+    const script = document.createElement("script");
 
-    // script.src = "../assets/js/main.js";
-    // script.async = true;
+    script.src = "../assets/js/main.js";
+    script.async = true;
 
-    // document.body.appendChild(script);
+    document.body.appendChild(script);
 
-    // return () => {
-    //   document.body.removeChild(script);
-    // };
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
   const displayCheck = () => {
     if (loggedIn) {
