@@ -322,6 +322,9 @@ function Home() {
                     </form>
                   </div>
                 </div> */}
+                <div className='widget'>
+                  <Advert/>
+                </div>
               </div>
             </div>
           </div>
