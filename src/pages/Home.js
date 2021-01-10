@@ -12,7 +12,6 @@ import FeaturedPosts from '../components/FeaturedPosts';
 import LatestPosts from '../components/LatestPosts';
 import Categories from '../components/Categories';
 import HotTags from '../components/HotTags';
-import Advert from '../components/Advert';
 import AboutUs from '../components/AboutUs';
 
 function Home() {
@@ -322,9 +321,6 @@ function Home() {
                     </form>
                   </div>
                 </div> */}
-                <div className='widget'>
-                  <Advert/>
-                </div>
               </div>
             </div>
           </div>
